@@ -1,0 +1,195 @@
+.slider{
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.slider-item{
+    position: relative;
+    height: calc(100vh - 91px);
+    display: flex;
+    align-items: center;
+}
+
+.slider-item .slider-image img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    object-fit: cover;
+    object-position: 60%;
+    z-index: -1;
+    width: 100%;
+}
+
+.slider-item .slider-heading{
+    font-size: 50px;
+    font-weight: 500;
+}
+
+.slider-item .slider-title{
+    font-size: 30px;
+    font-weight: 600;
+    color: #000;
+}
+
+.slider .slider-buttons{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px;
+}
+
+.slider .slider-buttons button{
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    border: 1px solid #dedede;
+    opacity: 0.5;
+    background-color: white;
+    transition: .2s ease all;
+}
+
+.slider .slider-buttons button:hover{
+    background-color: #000;
+    opacity: 1;
+    color: #fff;
+}
+
+.slider .slider-buttons button i{
+    font-size: 30px;
+}
+
+
+
+
+.campaigns{
+    margin-bottom: 30px;
+}
+
+.campaigns .campaign-item{
+    padding: 200px 35px;
+    background-size: cover;
+    background-position: center;
+    flex: 1;
+}
+
+
+.campaigns .campaigns-wrapper{
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.campaigns .campaign-item .campaign-title{
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 30px;
+    color: #dedede;
+}
+
+.campaigns .campaign-item .campaign-desc{
+    margin: 40px 0;
+    font-size: 15px;
+    color: #dedede;
+}
+
+
+.campaigns .campaign-item .two{
+    color: #000;
+}
+
+.campaigns-wrapper .campaign-item:nth-child(1){
+    background-image: url(../../../assets/img2/jordan-brooklyn-fleece-sıfır-yakalı-sweatshirtü-ZjbhZB.png);
+}
+
+.campaigns-wrapper .campaign-item:nth-child(2){
+    background-image: url(../../../assets/img2/pexels-photo-1450114.jpeg);
+}
+
+.campaigns-wrapper .campaign-item:nth-child(3){
+    background-image: url(../../../assets/img2/10.jpg);
+}
+
+@media (max-width: 768px) {
+    .campaigns .campaign-item{
+        width: 100%;
+        flex: unset;
+    }
+}
+
+
+
+
+
+
+.campaign-single{
+    background-image: url(../../../assets/img2/7.jpeg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding: 150px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.campaign-single .campaign-wrapper{
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.campaign-single .campaign-wrapper h2{
+    font-size: 25px;
+}
+
+.campaign-single .campaign-wrapper strong{
+    font-size: 55px;
+    font-weight: 600;
+    margin-top: 20px;
+}
+
+.campaign-single .campaign-wrapper a{
+    margin-top: 40px;
+}
+
+.policy{
+    border: 1px solid #dedede;
+    margin-top: 40px;
+}
+
+.policy .policy-list{
+    display: flex;
+    padding: 25px 0;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+
+.policy .policy-list .policy-item{
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+}
+
+.policy .policy-list .policy-item .policy-texts{
+    display: flex;
+    flex-direction: column;
+}
+
+.policy .policy-item i{
+    font-size: 50px;
+    display: flex;
+}
+
+@media (max-width: 768px) {
+    .policy .policy-list{
+        flex-direction: column;
+    }
+}

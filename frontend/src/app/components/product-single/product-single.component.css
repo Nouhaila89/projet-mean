@@ -1,0 +1,113 @@
+.site-main{
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.product-gallery{
+    width: 50%;
+    padding-left: 15px;
+}
+
+.product-gallery .single-image-wrapper img{
+    width: 100%;
+    height: 700px;
+}
+
+.product-gallery .single-image-wrapper{
+    border: 1px solid #dee0ea;
+}
+
+.product-thumbs .gallery-thumbs{
+    display: flex;
+    gap: 10px;
+}
+
+.product-thumbs .gallery-thumbs .img-fluid{
+    width: 100%;
+    margin: 10px 0;
+    height: 160px;
+}
+
+.gallery-thumbs li img{
+    border: 1px solid transparent;
+}
+
+.gallery-thumbs li img{
+    border: 1px solid #dee0ea;
+}
+
+.gallery-thumbs li img:hover{
+    border-color: #000;
+}
+
+ul,ol{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.site-main .product-title{
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.site-main .product-info{
+    width: 50%;
+    padding-left: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.site-main .stoc{
+    display: flex;
+    column-gap: 10px;
+    font-size: 18px;
+}
+
+.site-main .product-price{
+    font-size: 18px;
+}
+
+.site-main .values-list{
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.site-main .values-list span{
+    padding: 8px 40px;
+    border: 1px solid #dee0ea;
+    cursor: pointer;
+    transition: 0.2s ease all;
+}
+
+.site-main .values-list span:hover{
+    color: white;
+    background-color: #000;
+}
+
+
+
+/* .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  } */
+  
+  /* .main-image img {
+    width: 500px; /* Büyük resmin genişliği */
+ /* } */
+  
+  /* .thumbnail-images {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Küçük resimler arası boşluk */
+ /* } */
+  
+  /* .thumbnail-images img {
+    width: 100px; /* Küçük resimlerin genişliği */
+ /*   cursor: pointer;
+  } */
+  
