@@ -5,6 +5,9 @@ import { importProvidersFrom } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { routes } from './app/app.router';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 bootstrapApplication(AppComponent,{
   providers:[
@@ -12,6 +15,12 @@ bootstrapApplication(AppComponent,{
     importProvidersFrom(
       BrowserModule,
       CommonModule,
+      BrowserAnimationsModule,
+      NgxSpinnerModule,
+      ToastrModule.forRoot({
+        closeButton: true,
+        progressBar: true
+      }),
       RouterModule.forRoot(routes)
     )
   ]

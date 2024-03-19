@@ -1,9 +1,10 @@
 import { Routes } from '@angular/router';
+import { AdminGuard } from './common/guard/admin.guard';
 
 export const routes: Routes = [  
     {
             path: "admin",
-            loadComponent: ()=> import("./components/adminlayouts/adminlayouts.component").then(c=> c.AdminlayoutsComponent),
+            loadComponent: ()=> import("./components/adminlayouts/adminlayouts.component").then(c=> c.AdminlayoutsComponent),canActivate: [AdminGuard],
             children:[
                 {
                     path:"",
@@ -42,7 +43,7 @@ export const routes: Routes = [
             },
             {
                 path: "login",
-                loadComponent: ()=> import("./components/login/login.component").then(c=> c.LoginComponent)
+                loadComponent: ()=> import("./components/auth/components/login/login.component").then(c=> c.LoginComponent)
             },
             {
                 path: "about",
@@ -63,7 +64,7 @@ export const routes: Routes = [
             
             {
                 path: "register",
-                loadComponent: ()=> import("./components/register/register.component").then(c=> c.RegisterComponent)
+                loadComponent: ()=> import("./components/auth/components/register/register.component").then(c=> c.RegisterComponent)
             },
         ]
     }
