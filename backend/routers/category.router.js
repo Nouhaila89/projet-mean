@@ -2,9 +2,10 @@ const express = require("express");
 const router = express.Router();
 const Category = require("../models/category");
 const {v4:uuidv4} = require("uuid");
+const response = require("../services/response.service");
 
 router.post("/add", async (req, res)=> {
-    try {
+    response(res, async()=>{
         const {name} = req.body;
         
         const checkName = await Category.findOne({name: name});
@@ -19,23 +20,19 @@ router.post("/add", async (req, res)=> {
             await category.save();
             res.json({message: "Kategori kaydı başarıyla tamamlandı"}); 
         }
-    } catch (error) {
-        res.status(500).json({message: error.message});
-    }
+    })
 });
 
 router.post("/removeById", async (req, res)=> {
-    try {
+    response(res, async()=>{
         const {_id} = req.body;
         await Category.findByIdAndDelete(_id);
         res.json({message: "Kategori kaydı başarıyla silindi"});
-    } catch (error) {
-        res.status(500).json({message: error.message});
-    }
+    })
 });
 
 router.post("/update", async (req, res)=> {
-    try {
+    response(res, async()=>{
         const {_id,name} = req.body;
         const category = await Category.findOne({_id: _id});
         
@@ -52,18 +49,14 @@ router.post("/update", async (req, res)=> {
         }else{
             return res.status(403).json({ message: "Yeni kategori adı mevcut kategori adıyla aynı olamaz" });
         }
-    } catch (error) {
-        res.status(500).json({message: error.message});
-    }
+    })
 });
 
 router.get("/", async (req, res)=> {
-    try {
+    response(res, async()=>{
         const categories = await Category.find().sort({name: 1});
         res.json(categories);
-    } catch (error) {
-        res.status(500).json({message: error.message});
-    }
+    })
 });
 
 module.exports = router;

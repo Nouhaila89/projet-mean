@@ -5,17 +5,19 @@ import { CategoryService } from './services/category.service';
 import { SharedModule } from '../../common/shared/shared.module';
 import { NgForm } from '@angular/forms';
 import { SwalService } from '../../common/services/swal.service';
+import { CategoryPipe } from './pipe/category.pipe';
 
 @Component({
   selector: 'app-admin-category',
   standalone: true,
-  imports: [SharedModule],
+  imports: [SharedModule,CategoryPipe],
   templateUrl: './admin-category.component.html',
   styleUrl: './admin-category.component.css'
 })
 export class AdminCategoryComponent implements OnInit{
   categories: CategoryModel[] = [];
   updateCategory: CategoryModel = new CategoryModel();
+  search: string = "";
 
   constructor(
     private _toastr: ToastrService,

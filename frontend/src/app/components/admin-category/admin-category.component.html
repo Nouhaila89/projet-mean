@@ -6,7 +6,7 @@
         <div style="margin: 20px 0px;">          
             <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#addModal">Kategori Ekle</button>
             <div class="col-md-5" style="float: right;">
-              <input type="search" class="form-control" placeholder="Arancak değeri yazınız...">
+              <input type="search" [(ngModel)]="search" class="form-control" placeholder="Arancak değeri yazınız...">
             </div>
         </div>
        <div>
@@ -19,7 +19,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let category of categories let index = index">
+              <tr *ngFor="let category of categories | categoryPipe: search let index = index">
                 <th scope="row">{{index + 1}}</th>
                 <td>{{category.name}}</td>
                 <td><button class="btn btn-dark" style="margin: 0px 5px;" (click)="get(category)" data-bs-toggle="modal" data-bs-target="#updateModal">Güncelle</button><button (click)="removeById(category)" class="btn btn-danger">Sil</button></td>
