@@ -15,6 +15,10 @@ export const routes: Routes = [
                     loadComponent: ()=> import("./components/admin-products/admin-products.component").then(c=> c.AdminProductsComponent),
                 },
                 {
+                    path:"admin-products/add",
+                    loadComponent: ()=> import("./components/admin-products/product-add/product-add.component").then(c=> c.ProductAddComponent),
+                },
+                {
                     path:"admin-category",
                     loadComponent: ()=> import("./components/admin-category/admin-category.component").then(c=> c.AdminCategoryComponent),
                 },

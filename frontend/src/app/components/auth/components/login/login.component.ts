@@ -33,7 +33,7 @@ export class LoginComponent {
         this._toastr.success("Giriş başarılı");
         localStorage.setItem("token",res.token);
         localStorage.setItem("user", JSON.stringify(res.user));
-        if (res.user.isAdmin) {
+        if (res.user.isAdmin) { 
           this._router.navigateByUrl("/admin");
         } else {
           this._router.navigateByUrl("/");

@@ -58,7 +58,7 @@ router.post("/", async(req, res)=> {
             ]
         }).count();
 
-        let product = await Product
+        let products = await Product
         .find({
             $or: [
                 {
@@ -95,9 +95,9 @@ router.post("/getById", async(req,res)=>{
 })
 
 //Ürün Güncelleme
-router.post("/update", upload.array(images), async(req,res)=>{
+router.post("/update", upload.array("images"), async(req,res)=>{
     response(res, async()=>{
-        const {_id, stock, price, description, categories} = req.body;
+        const {_id, name, stock, price, description, categories} = req.body;
         
         let product = await Product.findById(_id);
         for(const image of product.imageUrls){
@@ -137,5 +137,15 @@ router.post("/removeImageByProductIdAndIndex", async(req, res)=>{
     })
 })
 
+// Ürünün Aktif/Pasif Durumu
+router.post("/changeActiveStatus", async(req, res)=>{
+    response(res, async()=>{
+        const {_id}= req.body;
+        let product = await Product.findById(_id);
+        product.isActive = !product.isActive;
+        await Product.findByIdAndUpdate(_id, product);
+        res.json({message: "Ürün durumu başarıyla değiştirildi"});
+    })
+})
 
 module.exports = router;
