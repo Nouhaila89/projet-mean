@@ -100,9 +100,6 @@ router.post("/update", upload.array("images"), async(req,res)=>{
         const {_id, name, stock, price, description, categories} = req.body;
         
         let product = await Product.findById(_id);
-        for(const image of product.imageUrls){
-            fs.unlink(image.path, ()=>{});
-        }
         
         let imageUrls;
         imageUrls = [...product.imageUrls,...req.files]

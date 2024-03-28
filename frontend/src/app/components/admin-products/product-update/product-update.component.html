@@ -1,16 +1,20 @@
 <div class="content-wrapper row-center">
   <div class="ml-3">
-    <h3 style="font-size: 30px">Ürün Ekleme Sayfası</h3>
+    <h3 style="font-size: 30px">Ürün Güncelleme Sayfası</h3>
   </div>
-  <div class="col-md-6 ml-3 mt-4">
-    <form #addForm="ngForm" autocomplete="off" (ngSubmit)="add(addForm)">
+  <div class="col-md-6 ml-3">
+    <form
+      #updateForm="ngForm"
+      autocomplete="off"
+      (ngSubmit)="update(updateForm)"
+    >
       <div class="form-group">
         <label for="name">Ürün Adı</label>
         <input
           type="text"
           name="name"
           id="name"
-          ngModel
+          [(ngModel)]="product.name"
           required
           #name
           minlength="3"
@@ -25,7 +29,7 @@
           class="form-control"
           name="categoriesSelect"
           id="categoriesSelect"
-          ngModel
+          [(ngModel)]="product.categories"
           multiple
           #categoriesSelect
         >
@@ -40,7 +44,7 @@
           type="number"
           name="stock"
           id="stock"
-          ngModel
+          [(ngModel)]="product.stock"
           required
           #stock
           min="1"
@@ -52,10 +56,10 @@
       <div class="form-group mt-2">
         <label for="price">Birim Fiyatı</label>
         <input
-          type="number"
+          type="price"
           name="price"
           id="price"
-          ngModel
+          [(ngModel)]="product.price"
           required
           #price
           min="1"
@@ -70,14 +74,14 @@
           type="text"
           name="description"
           id="description"
-          ngModel
+          [(ngModel)]="product.description"
           required
           #description
           min="1"
           class="form-control"
           [appValid]="description.validity.valid"
         />
-        <div class="invalid-feedback">Açıklama giriniz</div>
+        <div class="invalid-feedback">Ürün birim fiyatı en az 1 olmalıdır!</div>
       </div>
       <div class="form-group mt-2">
         <label for="images">Ürün Resimleri</label>
@@ -93,16 +97,20 @@
       </div>
       <hr />
       <div class="form-group mt-2">
-        <p>Seçilen Resimler</p>
+        <p>Mevcut Resimler</p>
         <span
-          (click)="removeImage(image.name, image.size, i)"
-          *ngFor="let image of imageUrls; let i = index"
+          (click)="deleteImage(product._id, i)"
+          *ngFor="let image of product.imageUrls; let i = index"
         >
-          <img [src]="image.imageUrl" width="100" class="mx-1" />
+          <img
+            [src]="'http://localhost:5000/' + image.path"
+            width="100"
+            class="mx-1"
+          />
         </span>
       </div>
       <div class="form-group mt-2">
-        <button class="btn btn-dark w-100">Kaydet</button>
+        <button class="btn btn-dark w-100">Güncelle</button>
       </div>
     </form>
   </div>

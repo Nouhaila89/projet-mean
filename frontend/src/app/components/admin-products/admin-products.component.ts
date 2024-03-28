@@ -31,6 +31,10 @@ export class AdminProductsComponent implements OnInit {
     this.getAll();
   }
 
+  pageSizeChanged() {
+    this.getAll(1);
+  }
+  
   getAll(pageNumber = 1){
     this.request.pageNumber = pageNumber;
     this._product.getAll(this.request, res=>{
@@ -49,7 +53,7 @@ export class AdminProductsComponent implements OnInit {
   }
 
   search(){
-    if(this.request.search.length >=3){
+    if(this.request.search.length >=1){
       this.getAll(1);
     }
   }
