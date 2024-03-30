@@ -145,4 +145,25 @@ router.post("/changeActiveStatus", async(req, res)=>{
     })
 })
 
+router.post("/getAllForHomePage", async(req,res)=>{
+    response(res, async()=>{
+        const {pageNumber, pageSize, search, categoryId} = req.body;
+        let products;
+        products = await Product
+        .find({
+            isActive: true,
+            categories: {$regex: categoryId, $options: 'i'},
+            $or: [
+                {
+                    name: {$regex: search, $options: 'i'}
+                }
+            ]
+        })
+        .sort({name: 1})
+        .populate("categories");
+
+        res.json(products);
+    })
+})
+
 module.exports = router;

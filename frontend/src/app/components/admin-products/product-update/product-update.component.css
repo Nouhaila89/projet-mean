@@ -12,10 +12,10 @@ span {
   span:after {
     content: "";
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 8%;
+    left: 90%;
     transform: translate(-50%, -50%);
-    width: 40px;
+    width: 20px;
     height: 2px;
     background-color: black;
   }

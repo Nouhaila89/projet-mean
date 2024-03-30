@@ -18,31 +18,24 @@ ul,ol{
 
 .categories-list{
     margin-top: 30px;
-    width: 200px;
+    width: 230px;
 }
 
-.categories-list .list-item-link{
+.categories-list .center-list-item{
     font-size: 20px;
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 1.2;
     position: relative;
+    padding-left: 5px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    cursor: pointer;
 }
 
-.categories-list .list-item-link::after{
-    content: "";
-    width: 0;
-    height: 1px;
+.active{
     background-color: #000;
-    position: absolute;
-    bottom: -2px;
-    left: 50%;
-    transform: translate(-50%);
-    transition: .2s ease width;
-}
-
-.center-list-item:hover .list-item-link::after{
-    width: 100%;
+    color: white;
 }
 
 a{

@@ -1,77 +1,33 @@
 <section style="margin-top: 91px;">
     <div class="container">
-        <div class="mt-5">
-            <input type="text" placeholder="Aramak istediğiniz ürünü giriniz" style="width: 800px; height: 40px; margin-left: 215px;">
-            <button class="btn btn-dark" style="margin-left: 10px; margin-top: -5px; width: 100px;">Ara</button>
-        </div>
-    </div>
-    <div class="container">
         <div class="categories-links">
             <ul class="categories-list">
-                <li class="center-list-item">
-                    <a href="#" class="list-item-link">Tüm Ürünler</a>
-                </li>
-                <li class="center-list-item">
-                    <a routerLink="/product" class="list-item-link">Sweartshirt</a>
-                </li>
-                <li class="center-list-item">
-                    <a href="#" class="list-item-link">Gömlek</a>
-                </li>
-                <li class="center-list-item">
-                    <a href="#" class="list-item-link">Tshirt</a>
-                </li>
-                <li class="center-list-item">
-                    <a href="#" class="list-item-link">Ayakkabı</a>
-                </li>
-                <li class="center-list-item">
-                    <a href="#" class="list-item-link">Takım Elbise</a>
-                </li>
-                <li class="center-list-item">
-                    <a href="#" class="list-item-link">Ceket</a>
-                </li>
-                <li class="center-list-item">
-                    <a href="#" class="list-item-link">Bere</a>
+                <li  (click)="changeCategory('','Tümü')"  class="center-list-item" [ngClass]="request.categoryName == 'Tümü' ? 'active' : ''">Tümü</li>
+                <li (click)="changeCategory(category._id, category.name)" class="center-list-item" [ngClass]="request.categoryName == category.name ? 'active' : ''" *ngFor="let category of categories">
+                   {{category.name}}
                 </li>
             </ul>
         </div>
         <div class="product-wrapper">
+            <div style="display: flex;">
+                <div class="mb-3" style="width: 750px; margin-right: 10px;">
+                    <input type="search" [(ngModel)]="request.search" class="form-control" placeholder="Arancak değeri yazınız">
+                </div>
+                <div>
+                    <button style="width: 100px;" (click)="getAll()" class="btn btn-dark">Ara</button>
+                </div>
+            </div>
             <ul class="product-list">
-                <li class="product-item">
+                <li class="product-item" *ngFor="let product of products let i = index">
                     <div class="product-image">
-                        <a routerLink="/product-single">
-                            <img src="../../../assets/img2/products/1.png" alt="">
+                        <a routerLink="/product-single/{{product._id}}">
+                            <img [src]="'http://localhost:5000/' + product.imageUrls[0].path" alt="">
                         </a>
                     </div>
                     <div class="product-info">
-                        <a href="#" class="product-title">Siyah Tshirt</a>
+                        <a href="#" class="product-title">{{product.name}}</a>
                         <div class="product-price">
-                            <strong>108.00 TL</strong>
-                        </div>
-                    </div>
-                </li>
-                <li class="product-item">
-                    <div class="product-image">
-                        <a href="#">
-                            <img src="../../../assets/img2/products/1.png" alt="">
-                        </a>
-                    </div>
-                    <div class="product-info">
-                        <a href="#" class="product-title">Siyah Tshirt</a>
-                        <div class="product-price">
-                            <strong>108.00 TL</strong>
-                        </div>
-                    </div>
-                </li>
-                <li class="product-item">
-                    <div class="product-image">
-                        <a href="#">
-                            <img src="../../../assets/img2/products/1.png" alt="">
-                        </a>
-                    </div>
-                    <div class="product-info">
-                        <a href="#" class="product-title">Analogue Resin Strap</a>
-                        <div class="product-price">
-                            <strong>108.00 TL</strong>
+                            <strong>{{product.price}} TL</strong>
                         </div>
                     </div>
                 </li>

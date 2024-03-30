@@ -1,12 +1,54 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
+import { SharedModule } from '../../common/shared/shared.module';
+import { SwalService } from '../../common/services/swal.service';
+import { BasketModel } from './models/basket.model';
+import { BasketService } from './service/basket.service';
+
 
 @Component({
   selector: 'app-baskets',
   standalone: true,
-  imports: [],
+  imports: [SharedModule],
   templateUrl: './baskets.component.html',
-  styleUrl: './baskets.component.css'
+  styleUrls: ['./baskets.component.css']
 })
-export class BasketsComponent {
+export class BasketsComponent implements OnInit {
+baskets: BasketModel[] = [];
+sum: number = 0;
 
+constructor(
+  private _basket: BasketService,
+  private _toastr: ToastrService,
+  private _swal: SwalService,
+){}
+
+  ngOnInit(): void {
+    this.getAll();
+  }
+
+getAll(){
+  this._basket.getAll(res=> {
+    this.baskets = res;
+    this.calculate();
+  });
+}
+
+calculate(){
+  this.sum = 0;
+  this.baskets.forEach(element=> {
+    this.sum += (element.price * element.quantity)
+  });
+}
+
+removeById(_id: string){
+  this._swal.callSwal("Ürünü sepetten silmek istiyor musunuz?","Ürünü Sil","Sil",()=>{
+    let model = {_id: _id};
+    this._basket.removeById(model, res=> {
+      this._toastr.info(res.message);
+      this.getAll();
+    });
+  })  
+}
 }

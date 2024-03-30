@@ -15,13 +15,13 @@
                 </div>
             </div>
             <div class="product-info">
-                <h1 class="product-title">Siyah Tshirt</h1>
+                <h1 class="product-title">{{product.name}}</h1>
                 <div class="product-price">
-                    <strong>108 TL</strong>
+                    <strong>{{product.price}} TL</strong>
                 </div>
                 <div class="stoc">
                     <p>Stok Adedi:</p>
-                    <strong>100</strong>
+                    <strong>{{product.stock}}</strong>
                 </div>
                 <div>
                     <p>Beden</p>
@@ -32,11 +32,9 @@
                         <span>XL</span>
                     </div>
                 </div>
-                <button class="btn btn-dark">SEPETE EKLE</button>
+                <button (click)="addBasket(product._id, product.price)" class="btn btn-dark">SEPETE EKLE</button>
                 <h4>Ürün Özellikleri</h4>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque molestiae,
-                ipsam dignissimos non fugit inventore error ab accusamus sit totam, neque accusantium 
-                illo dolorem? Accusantium debitis quas sequi architecto quibusdam. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cumque sed quasi aperiam molestiae quibusdam accusantium ex nobis quos, beatae eveniet debitis facilis saepe odit possimus eaque, voluptatum voluptate nam reprehenderit?</p>
+                <p>{{product.description}}</p>
             </div>
         </div>
     </div>

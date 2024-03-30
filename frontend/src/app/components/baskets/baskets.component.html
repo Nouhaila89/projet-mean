@@ -13,21 +13,13 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td><img src="../../../assets/img2/products/1.png" alt=""></td>
-                    <td class="td-center">Siyah Tsirth</td>
-                    <td class="td-center"><i class="bi bi-dash-square" style="margin-right: 10px;"></i> 1 <i class="bi bi-plus-square" style="margin: 10px;"></i></td>
-                    <td class="td-center">180</td>
-                    <td class="td-center">180</td>
-                    <td class="td-center"><i class="bi bi-x-lg"></i></td>
-                  </tr>
-                  <tr>
-                    <td><img src="../../../assets/img2/products/1.png" alt=""></td>
-                    <td class="td-center">Siyah Tsirth</td>
-                    <td class="td-center"><i class="bi bi-dash-square" style="margin-right: 10px;"></i> 1 <i class="bi bi-plus-square" style="margin: 10px;"></i></td>
-                    <td class="td-center">180</td>
-                    <td class="td-center">180</td>
-                    <td class="td-center"><i class="bi bi-x-lg"></i></td>
+                  <tr *ngFor="let basket of baskets let index = index">
+                    <td><img [src]="'http://localhost:5000/' + basket.products[0].imageUrls[0].path" alt=""></td>
+                    <td class="td-center">{{basket.products[0].name}}</td>
+                    <td class="td-center"><i class="bi bi-dash-square" style="margin-right: 10px;"></i> {{basket.quantity}} <i class="bi bi-plus-square" style="margin: 10px;"></i></td>
+                    <td class="td-center">{{basket.price}}</td>
+                    <td class="td-center">{{basket.price * basket.quantity}}</td>
+                    <td (click)="removeById(basket._id)" class="td-center"><i class="bi bi-x-lg"></i></td>
                   </tr>
                 </tbody>
               </table>
@@ -35,9 +27,9 @@
         <div class="col-md-3 cart-total">
             <div class="cart-total-wrapper">
             <h5>SİPARİŞ ÖZETİ</h5>
-            <h6>Toplam Tutar(KDV Dahil): 180 TL</h6>
+            <h6>Toplam Tutar(KDV Dahil): {{sum}} TL</h6>
             <h6>Kargo Ücreti: 0.00 TL</h6>
-            <h5>Ödenecek Tutar: 180 TL</h5>
+            <h5>Ödenecek Tutar: {{sum}} TL</h5>
             <button class="btn btn-dark">Satın Al</button>
             </div>
         </div>

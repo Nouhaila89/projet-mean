@@ -46,7 +46,7 @@ export const routes: Routes = [
                 loadComponent: ()=> import("./components/product/product.component").then(c=> c.ProductComponent)
             },
             {
-                path: "product-single",
+                path: "product-single/:value",
                 loadComponent: ()=> import("./components/product-single/product-single.component").then(c=> c.ProductSingleComponent)
             },
             {
