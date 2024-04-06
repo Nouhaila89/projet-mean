@@ -13,32 +13,51 @@ export class BasketService {
     private _http: GenericHttpService
   ) { }
 
-  getAll(callBack: (res: BasketModel[])=> void){
+  getAll(callBack: (res: BasketModel[]) => void) {
     let userString = localStorage.getItem("user");
     let user = JSON.parse(userString);
-    let model = {userId: user._id};
-    this._http.post<BasketModel[]>("baskets",model, res=> callBack(res));
+    let model = { userId: user ? user._id : null }; // Eğer user null ise userId null olacak
+    this._http.post<BasketModel[]>("baskets", model, res => callBack(res));
   }
 
-  getCount(){
+  getCount() {
     let userString = localStorage.getItem("user");
     let user = JSON.parse(userString);
-    let model = {userId: user._id};
-    this._http.post<any>("baskets/getCount",model, res=> this.count = res.count);
+    let userId = user ? user._id : null; // Eğer user null ise userId null olacak
+    if (userId) {
+      let model = { userId: userId };
+      this._http.post<any>("baskets/getCount", model, res => {
+        if (res && res.count) {
+          this.count = res.count;
+        } else {
+          this.count = 0;
+        }
+      });
+    } else {
+      this.count = 0; // user null ise count 0 olarak atanacak
+    }
   }
 
-  add(model:BasketModel, callBack: (res: MessageResponseModel)=> void){
+  add(model: BasketModel, callBack: (res: MessageResponseModel) => void) {
     let userString = localStorage.getItem("user");
     let user = JSON.parse(userString);
-    model.userId = user._id;
-    this._http.post<MessageResponseModel>("baskets/add",model, res=>{
+    model.userId = user ? user._id : null;
+    this._http.post<MessageResponseModel>("baskets/add", model, res => {
       this.getCount();
       callBack(res);
     });
   }
 
-  removeById(model:any, callBack: (res: MessageResponseModel)=> void){    
-    this._http.post<MessageResponseModel>("baskets/removeById",model, res=> {
+  updateQuantity(_id: string, newQuantity: number, callBack: (res: MessageResponseModel) => void) {
+    const model = { _id: _id, quantity: newQuantity };
+    this._http.post<MessageResponseModel>("baskets/updateQuantity", model, res => {
+      this.getCount();
+      callBack(res);
+    });
+  }
+
+  removeById(model: any, callBack: (res: MessageResponseModel) => void) {
+    this._http.post<MessageResponseModel>("baskets/removeById", model, res => {
       this.getCount();
       callBack(res);
     });

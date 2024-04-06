@@ -51,4 +51,33 @@ removeById(_id: string){
     });
   })  
 }
+
+removeById2(_id: string){
+    let model = {_id: _id};
+    this._basket.removeById(model, res=> {
+      this.getAll();
+    });
+}
+
+changeQuantity(index: number, action: string) {
+  const basket = this.baskets[index];
+  let newQuantity = basket.quantity;
+
+  if (action === 'increase') {
+    newQuantity++;
+  } else if (action === 'decrease') {
+    newQuantity--;
+  }
+
+  if (newQuantity === 0) {
+    this.removeById2(basket._id);
+    return;
+  }
+
+  basket.quantity = newQuantity;
+
+  this._basket.updateQuantity(basket._id, newQuantity, res => {
+    this.calculate();
+  });
+}
 }
