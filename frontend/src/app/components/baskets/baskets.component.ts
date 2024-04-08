@@ -74,10 +74,21 @@ changeQuantity(index: number, action: string) {
     return;
   }
 
+  if (action === 'increase' && this.isStockZero(basket)) {
+    return; // Stok sıfırsa ve artıya basılırsa işlem yapma
+  }
+
   basket.quantity = newQuantity;
 
   this._basket.updateQuantity(basket._id, newQuantity, res => {
     this.calculate();
   });
+}
+
+isStockZero(basket: BasketModel): boolean {
+  return basket.selectedSize === 'S' && basket.products[0].stockS === 0 ||
+    basket.selectedSize === 'M' && basket.products[0].stockM === 0 ||
+    basket.selectedSize === 'X' && basket.products[0].stockX === 0 ||
+    basket.selectedSize === 'XL' && basket.products[0].stockXl === 0;
 }
 }

@@ -19,6 +19,7 @@ export class ProductSingleComponent {
   product: ProductModel = new ProductModel();
   selectedImage: string = '';
   thumbnailImages: string[] = [];
+  selectedSize: string = '';
 
   constructor(
     private _product: ProductService,
@@ -42,7 +43,12 @@ export class ProductSingleComponent {
       this.product = res;
       this.thumbnailImages = this.product.imageUrls.map(img => `http://localhost:5000/${img.path}`);
       this.selectedImage = this.thumbnailImages[0];
+      this.selectSize('S');
     });
+  }
+
+  selectSize(size: string) {
+    this.selectedSize = size;
   }
 
   addBasket(productId: string, price: number){
@@ -50,6 +56,7 @@ export class ProductSingleComponent {
     model.productId = productId;
     model.price = price;
     model.quantity = 1;
+    model.selectedSize = this.selectedSize;
     this._basket.add(model, res=> {
       this._toastr.success(res.message);
       this.getById();

@@ -9,14 +9,17 @@ const response = require("../services/response.service");
 //Ürün Ekleme
 router.post("/add",upload.array("images"), async(req, res)=>{
     response(res, async()=> {
-        const {name, stock, price, description, categories} = req.body;
+        const {name, stockS, stockM, stockX, stockXl, price, description, categories} = req.body;
 
         const productId = uuidv4();
 
         let product = new Product({
             _id: productId,
             name: name.toUpperCase(),
-            stock: stock,
+            stockS: stockS,
+            stockM: stockM,
+            stockX: stockX,
+            stockXl: stockXl,
             price: price,
             description: description,
             categories: categories,
@@ -97,7 +100,7 @@ router.post("/getById", async(req,res)=>{
 //Ürün Güncelleme
 router.post("/update", upload.array("images"), async(req,res)=>{
     response(res, async()=>{
-        const {_id, name, stock, price, description, categories} = req.body;
+        const {_id, name, stockS, stockM, stockX, stockXl, price, description, categories} = req.body;
         
         let product = await Product.findById(_id);
         
@@ -105,7 +108,10 @@ router.post("/update", upload.array("images"), async(req,res)=>{
         imageUrls = [...product.imageUrls,...req.files]
         product = {
             name: name.toUpperCase(),
-            stock: stock,
+            stockS: stockS,
+            stockM: stockM,
+            stockX: stockX,
+            stockXl: stockXl,
             price: price,
             imageUrls: imageUrls,
             description: description,

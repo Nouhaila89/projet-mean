@@ -88,6 +88,18 @@ ul,ol{
     background-color: #000;
 }
 
+.site-main .values-list span {
+    padding: 8px 40px;
+    border: 1px solid #dee0ea;
+    cursor: pointer;
+    transition: 0.2s ease all;
+}
+
+.site-main .values-list span.active {
+    color: white;
+    background-color: #000;
+}
+
 
 
 /* .container {

@@ -88,7 +88,10 @@ export class ProductUpdateComponent {
       formData.append("name", this.product.name);
       formData.append("price", price);
       formData.append("description", this.product.description);
-      formData.append("stock", product["stock"]);
+      formData.append("stockS", product["stockS"]);
+      formData.append("stockM", product["stockM"]);
+      formData.append("stockX", product["stockX"]);
+      formData.append("stockXl", product["stockXl"]);
       for(const category of categories){
         formData.append("categories", category);
       }

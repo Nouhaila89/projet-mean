@@ -68,12 +68,18 @@ export class ProductAddComponent implements OnInit{
       let categories: string[] = product["categoriesSelect"];
       let name = product["name"];
       let price = product["price"];
-      let stock = product["stock"];
+      let stockS = product["stockS"];
+      let stockM = product["stockM"];
+      let stockX = product["stockX"];
+      let stockXl = product["stockXl"];
       let description = product["description"];
       price = price.toString().replace(",",".");
       let formData = new FormData();
       formData.append("name", name);
-      formData.append("stock", stock);
+      formData.append("stockS", stockS);
+      formData.append("stockM", stockM);
+      formData.append("stockX", stockX);
+      formData.append("stockXl", stockXl);
       formData.append("price", price);
       formData.append("description", description);
       for(const category of categories){

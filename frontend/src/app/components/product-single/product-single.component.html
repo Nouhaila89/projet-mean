@@ -21,15 +21,18 @@
                 </div>
                 <div class="stoc">
                     <p>Stok Adedi:</p>
-                    <strong>{{product.stock}}</strong>
+                    <strong *ngIf="selectedSize === 'S'">{{ product.stockS }}</strong>
+                    <strong *ngIf="selectedSize === 'M'">{{ product.stockM }}</strong>
+                    <strong *ngIf="selectedSize === 'X'">{{ product.stockX }}</strong>
+                    <strong *ngIf="selectedSize === 'XL'">{{ product.stockXl }}</strong>
                 </div>
                 <div>
                     <p>Beden</p>
                     <div class="values-list">
-                        <span>S</span>
-                        <span>M</span>
-                        <span>L</span>
-                        <span>XL</span>
+                        <span (click)="selectSize('S')" [ngClass]="{ 'active': selectedSize === 'S' }">S</span>
+                        <span (click)="selectSize('M')" [ngClass]="{ 'active': selectedSize === 'M' }">M</span>
+                        <span (click)="selectSize('X')" [ngClass]="{ 'active': selectedSize === 'X' }">X</span>
+                        <span (click)="selectSize('XL')" [ngClass]="{ 'active': selectedSize === 'XL' }">XL</span>
                     </div>
                 </div>
                 <button (click)="addBasket(product._id, product.price)" class="btn btn-dark">SEPETE EKLE</button>
@@ -39,14 +42,3 @@
         </div>
     </div>
 </section>
-
-<!-- <div class="container">
-    <div class="main-image">
-      <img [src]="selectedImage" alt="Main Image">
-    </div>
-    <div class="thumbnail-images">
-      <div *ngFor="let image of thumbnailImages; let i = index" (click)="changeImage(i)">
-        <img [src]="image" alt="Thumbnail Image {{i}}">
-      </div>
-    </div>
-  </div> -->

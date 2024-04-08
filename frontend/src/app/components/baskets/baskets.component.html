@@ -7,6 +7,7 @@
                     <th scope="col">Ürün Resimi</th>
                     <th scope="col">Ürün Adı</th>
                     <th scope="col">Adet</th>
+                    <th scope="col">Beden</th>
                     <th scope="col">Fiyatı</th>
                     <th scope="col">Toplam Tutar</th>
                     <th scope="col">İşlemler</th>
@@ -21,6 +22,7 @@
                       {{ basket.quantity }}
                       <i class="bi bi-plus-square" style="margin-left: 10px;" (click)="changeQuantity(index, 'increase')"></i>
                   </td>
+                    <td class="td-center">{{basket.selectedSize}}</td>
                     <td class="td-center">{{basket.price}}</td>
                     <td class="td-center">{{basket.price * basket.quantity}}</td>
                     <td (click)="removeById(basket._id)" class="td-center"><i class="bi bi-x-lg"></i></td>

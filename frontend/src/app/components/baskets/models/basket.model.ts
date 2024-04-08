@@ -8,4 +8,5 @@ export class BasketModel{
     products: ProductModel[] = [];
     price: number = 0;
     quantity: number = 1;
+    selectedSize: string = "";
 }

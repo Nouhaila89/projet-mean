@@ -39,17 +39,61 @@
         </select>
       </div>
       <div class="form-group mt-2">
-        <label for="stock">Stok Adedi</label>
+        <label for="stockS">StokS Adedi</label>
         <input
           type="number"
-          name="stock"
-          id="stock"
-          [(ngModel)]="product.stock"
+          name="stockS"
+          id="stockS"
+          [(ngModel)]="product.stockS"
           required
-          #stock
+          #stockS
           min="1"
           class="form-control"
-          [appValid]="stock.validity.valid"
+          [appValid]="stockS.validity.valid"
+        />
+        <div class="invalid-feedback">Ürün stok adedi en az 1 olmalıdır!</div>
+      </div>
+      <div class="form-group mt-2">
+        <label for="stockM">StokM Adedi</label>
+        <input
+          type="number"
+          name="stockM"
+          id="stockM"
+          [(ngModel)]="product.stockM"
+          required
+          #stockM
+          min="1"
+          class="form-control"
+          [appValid]="stockM.validity.valid"
+        />
+        <div class="invalid-feedback">Ürün stok adedi en az 1 olmalıdır!</div>
+      </div>
+      <div class="form-group mt-2">
+        <label for="stockX">StokX Adedi</label>
+        <input
+          type="number"
+          name="stockX"
+          id="stockX"
+          [(ngModel)]="product.stockX"
+          required
+          #stockX
+          min="1"
+          class="form-control"
+          [appValid]="stockX.validity.valid"
+        />
+        <div class="invalid-feedback">Ürün stok adedi en az 1 olmalıdır!</div>
+      </div> <div class="form-group mt-2">
+        <label for="stockXl">StokXl Adedi</label>
+        <input
+          type="number"
+          name="stockXl"
+          id="stockXl"
+          [(ngModel)]="product.stockXl"
+          required
+          #stockXl
+          min="1"
+          class="form-control"
+          [appValid]="stockXl.validity.valid"
         />
         <div class="invalid-feedback">Ürün stok adedi en az 1 olmalıdır!</div>
       </div>
