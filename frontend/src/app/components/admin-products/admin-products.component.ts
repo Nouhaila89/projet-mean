@@ -15,7 +15,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrl: './admin-products.component.css'
 })
 export class AdminProductsComponent implements OnInit {
-  result: PaginationResultModel<ProductModel[]> = new PaginationResultModel<ProductModel[]>;
+  result: PaginationResultModel<ProductModel[]> = new PaginationResultModel<ProductModel[]>();
   request: RequestModel = new RequestModel();
   pageNumbers: number[] = [];
   product: ProductModel = new ProductModel();

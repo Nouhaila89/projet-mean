@@ -65,7 +65,7 @@
           <form autocomplete="off" #addForm="ngForm" (ngSubmit)="add(addForm)">
           <div class="modal-body">
             <label for="name">Kategori Adı</label>
-            <input type="text" ngModel class="form-control" name="name" id="name" #name [appValid]="name.validity.valid" required>
+            <input type="text" [(ngModel)]="updateCategory.name" class="form-control" name="name" id="name" #name [appValid]="name.validity.valid" required>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>

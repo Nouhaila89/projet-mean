@@ -60,6 +60,7 @@ export class ProductSingleComponent {
     this._basket.add(model, res=> {
       this._toastr.success(res.message);
       this.getById();
+      return false;
     });
   }
 }

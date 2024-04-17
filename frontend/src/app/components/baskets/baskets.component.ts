@@ -5,6 +5,7 @@ import { SharedModule } from '../../common/shared/shared.module';
 import { SwalService } from '../../common/services/swal.service';
 import { BasketModel } from './models/basket.model';
 import { BasketService } from './service/basket.service';
+import { PaymentService } from '../payment/service/payment.service';
 
 
 @Component({
@@ -22,6 +23,7 @@ constructor(
   private _basket: BasketService,
   private _toastr: ToastrService,
   private _swal: SwalService,
+  private _paymentService: PaymentService
 ){}
 
   ngOnInit(): void {
@@ -32,6 +34,7 @@ getAll(){
   this._basket.getAll(res=> {
     this.baskets = res;
     this.calculate();
+    this._paymentService.setSum(this.sum);
   });
 }
 
@@ -75,13 +78,15 @@ changeQuantity(index: number, action: string) {
   }
 
   if (action === 'increase' && this.isStockZero(basket)) {
-    return; // Stok sıfırsa ve artıya basılırsa işlem yapma
+    return;
   }
 
   basket.quantity = newQuantity;
 
   this._basket.updateQuantity(basket._id, newQuantity, res => {
     this.calculate();
+    this._toastr.info(res.message);
+    this.getAll();
   });
 }
 

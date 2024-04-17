@@ -12,11 +12,13 @@ const authRouter = require("./routers/auth.router");
 const categoryRouter = require("./routers/category.router");
 const productRouter = require("./routers/product.router");
 const basketRouter = require("./routers/basket.router");
+const paymentRouter = require("./routers/payment.router");
 
 app.use("/api/auth", authRouter);
 app.use("/api/categories",categoryRouter);
 app.use("/api/products", productRouter);
 app.use("/api/baskets", basketRouter);
+app.use("/api/payme", paymentRouter);
 
 connection();
 
