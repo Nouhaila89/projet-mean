@@ -23,9 +23,14 @@ export class PaymentComponent implements OnInit {
   }
 
   makePayment() {
-    this._paymentService.add(this.paymentModel, res => {
-      this._toastr.success(res.message);
-    } )
+    this._paymentService.add(this.paymentModel, (res) => {
+      if (res.message = "Ödeme başarılı") {
+        this._toastr.success(res.message);
+        this.createOrder();
+      } else {
+        this._toastr.error(res.message);
+      }
+    });
   }
 
   createOrder(){
