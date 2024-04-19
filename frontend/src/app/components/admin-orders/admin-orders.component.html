@@ -9,54 +9,24 @@
                 <th scope="col">#</th>
                 <th scope="col">Ürün Resmi</th>
                 <th scope="col">Ürün Adı</th>
-                <th scope="col">Kataegoriler</th>
-                <th scope="col">Stok Bilgisi</th>
+                <th scope="col">Beden</th>
+                <th scope="col">Adet</th>
                 <th scope="col">Birim Fiyatı</th>
-                <th scope="col">Oluşturulma Tarihi</th>
-                <th scope="col">Aktif/Pasif</th>
+                <th scope="col">Tutar</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Resim</td>
-                <td>siyah</td>
-                <td>Tsirth</td>
-                <td>Tsirth</td>
-                <td>Tsirth</td>
-                <td>Tsirth</td>
-                <td>Tsirth</td>
-              </tr>
-              <tr>
-                <th scope="row">1</th>
-                <td>Resim</td>
-                <td>siyah</td>
-                <td>Tsirth</td>
-                <td>Tsirth</td>
-                <td>Tsirth</td>
-                <td>Tsirth</td>
-                <td>Tsirth</td>
-              </tr>
-              <tr>
-                <th scope="row">1</th>
-                <td>Resim</td>
-                <td>siyah</td>
-                <td>Tsirth</td>
-                <td>Tsirth</td>
-                <td>Tsirth</td>
-                <td>Tsirth</td>
-                <td>Tsirth</td>
-              </tr>
-               <tr>
-                <th scope="row">1</th>
-                <td>Resim</td>
-                <td>siyah</td>
-                <td>Tsirth</td>
-                <td>Tsirth</td>
-                <td>Tsirth</td>
-                <td>Tsirth</td>
-                <td>Tsirth</td>
-              </tr>
+              <tr *ngFor="let order of orders">
+                <td>{{order.createdDate |date: 'dd.MM.yyyy HH:mm:ss'}}</td>
+                <td>
+                    <img [src]="'http://localhost:5000/' + order?.products[0]?.imageUrls[0]?.path" width="50"/>
+                </td>
+                <td>{{order?.products[0]?.name}}</td>        
+                <td>{{order.size}}</td>        
+                <td>{{order.quantity}}</td>
+                <td>{{order.price}}</td>
+                <td>{{+(order.price * order.quantity)}} TL</td> 
+                </tr>
             </tbody>
           </table>
     </div>

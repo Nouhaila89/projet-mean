@@ -7,28 +7,24 @@
                     <th scope="col">Sipariş Tarhi</th>
                     <th scope="col">Ürün Resimi</th>
                     <th scope="col">Ürün Adı</th>
+                    <th scope="col">Beden</th>
                     <th scope="col">Adet</th>
                     <th scope="col">Fiyatı</th>
                     <th scope="col">Toplam Tutar</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td class="td-center">30.03.2024</td>
-                    <td><img src="../../../assets/img2/products/1.png" alt=""></td>
-                    <td class="td-center">Siyah Tsirth</td>
-                    <td class="td-center">1</td>
-                    <td class="td-center">180</td>
-                    <td class="td-center">180</td>
-                  </tr>
-                  <tr>
-                    <td class="td-center">30.03.2024</td>
-                    <td><img src="../../../assets/img2/products/1.png" alt=""></td>
-                    <td class="td-center">Siyah Tsirth</td>
-                    <td class="td-center">1</td>
-                    <td class="td-center">180</td>
-                    <td class="td-center">180</td>
-                  </tr>
+                  <tr *ngFor="let order of orders">
+                    <td>{{order.createdDate |date: 'dd.MM.yyyy HH:mm:ss'}}</td>
+                    <td>
+                        <img [src]="'http://localhost:5000/' + order?.products[0]?.imageUrls[0]?.path" width="50"/>
+                    </td>
+                    <td>{{order?.products[0]?.name}}</td>        
+                    <td>{{order.size}}</td>        
+                    <td>{{order.quantity}}</td>
+                    <td>{{order.price}}</td>
+                    <td>{{+(order.price * order.quantity)}} TL</td> 
+                    </tr>
                 </tbody>
               </table>
         </div>
