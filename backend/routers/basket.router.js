@@ -33,7 +33,7 @@ router.post("/add", async (req, res) => {
                 }
                 break;
             case 'XL':
-                if (product.stockXL === 0 || product.stockXL < quantity) {
+                if (product.stockXl === 0 || product.stockXl < quantity) {
                     return res.status(400).json({ message: "Üzgünüz, bu bedende yeterli stok bulunmamaktadır." });
                 }
                 break;
@@ -69,7 +69,7 @@ router.post("/add", async (req, res) => {
                 product.stockX -= quantity;
                 break;
             case 'XL':
-                product.stockXL -= quantity;
+                product.stockXl -= quantity;
                 break;
         }
 
@@ -120,11 +120,11 @@ router.post("/updateQuantity", async (req, res) => {
                 product.stockX = newStock;
                 break;
             case 'XL':
-                newStock = product.stockXL + basket.quantity - quantity;
+                newStock = product.stockXl + basket.quantity - quantity;
                 if (newStock < 0) {
                     return res.status(400).json({ message: "Üzgünüz, bu bedende yeterli stok bulunmamaktadır." });
                 }
-                product.stockXL = newStock;
+                product.stockXl = newStock;
                 break;
             default:
                 return res.status(400).json({ message: "Geçersiz beden seçimi." });

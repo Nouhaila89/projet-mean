@@ -43,4 +43,27 @@ export class ProductComponent implements OnInit {
     this.request.categoryId = categoryId;
     this.getAll();
   }
+
+  isFilterVisible: boolean = false;
+
+  toggleFilter() {
+      this.isFilterVisible = !this.isFilterVisible;
+  }
+
+  togglePriceFilter(min: number, max: number) {
+    if (this.request.priceFilter === `${min}-${max}`) {
+        this.request.priceFilter = "0";
+        this.getAll()
+    } else {
+        this.request.priceFilter = `${min}-${max}`;
+    }
+}
+
+toggleSizeFilter(size: string) {
+  this.request.sizeFilter = size;
+}
+
+applyFilters() {
+  this.getAll();
+}
 }

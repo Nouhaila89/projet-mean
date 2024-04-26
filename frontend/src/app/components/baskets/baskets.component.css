@@ -3,6 +3,11 @@
     display: flex;
 }
 
+.container1{
+    padding-left: 270px;
+    padding-right: 170px;
+}
+
 .baskets-wrapper .td-center{
     padding-top: 40px;
 }
@@ -28,4 +33,5 @@
 
 img{
     width: 60px;
+    height: 75px;
 }

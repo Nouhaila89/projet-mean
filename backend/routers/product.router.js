@@ -151,25 +151,61 @@ router.post("/changeActiveStatus", async(req, res)=>{
     })
 })
 
-router.post("/getAllForHomePage", async(req,res)=>{
-    response(res, async()=>{
-        const {pageNumber, pageSize, search, categoryId} = req.body;
+router.post("/getAllForHomePage", async (req, res) => {
+    response(res, async () => {
+        const { pageNumber, pageSize, search, categoryId, priceFilter, sizeFilter } = req.body;
         let products;
+
+        // Fiyat filtresi
+        let priceQuery = {};
+        if (priceFilter !== "0") {
+            // Fiyat aralığını parçalara ayır
+            const [minPrice, maxPrice] = priceFilter.split('-').map(parseFloat);
+            // Fiyata göre filtreleme
+            priceQuery = { price: { $gte: minPrice, $lte: maxPrice } };
+        }
+
+        // Beden filtresi
+        let sizeQuery = {};
+        if (sizeFilter !== "") {
+            // Seçilen bedene göre uygun stok alanını seç
+            let stockField;
+            switch (sizeFilter) {
+                case "S":
+                    stockField = "stockS";
+                    break;
+                case "M":
+                    stockField = "stockM";
+                    break;
+                case "X":
+                    stockField = "stockX";
+                    break;
+                case "XL":
+                    stockField = "stockXl";
+                    break;
+                default:
+                    break;
+            }
+            // Beden filtresini kullanıcıdan gelen bedene göre ayarla
+            sizeQuery = { [stockField]: { $gt: 0 } };
+        }
+
+        // Ürünleri getir
         products = await Product
-        .find({
-            isActive: true,
-            categories: {$regex: categoryId, $options: 'i'},
-            $or: [
-                {
-                    name: {$regex: search, $options: 'i'}
-                }
-            ]
-        })
-        .sort({name: 1})
-        .populate("categories");
+            .find({
+                isActive: true,
+                categories: { $regex: categoryId, $options: 'i' },
+                $or: [{ name: { $regex: search, $options: 'i' } }],
+                ...priceQuery,
+                ...sizeQuery
+            })
+            .sort({ name: 1 })
+            .populate("categories");
 
         res.json(products);
-    })
-})
+    });
+});
+
+
 
 module.exports = router;

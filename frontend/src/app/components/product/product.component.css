@@ -11,26 +11,28 @@ ul,ol{
     list-style: none;
 }
 
-.container{
-    display: flex;
+.container1{
     gap: 20px;
+    padding: 0px 70px;
 }
 
 .categories-list{
     margin-top: 30px;
-    width: 230px;
+    display: flex;
 }
 
 .categories-list .center-list-item{
-    font-size: 20px;
+    font-size: 17px;
     font-weight: 500;
+    margin: 5px;
     text-transform: uppercase;
     letter-spacing: 1.2;
     position: relative;
     padding-left: 5px;
-    padding: 5px;
+    padding: 5px 15px;
     border: 1px solid #ccc;
     cursor: pointer;
+    border-radius: 5px;
 }
 
 .active{
@@ -44,12 +46,13 @@ a{
 }
 
 .product-wrapper{
-    margin-top: 30px;
+    margin-top: 10px;
     margin-bottom: 30px;
 }
 
 .product-list .product-item img{
     width: 100%;
+    height: 600px;
 }
 
 .product-list .product-item{
@@ -68,8 +71,58 @@ a{
 }
 
 .product-list .product-item .product-title{
-    font-size: 14px;
+    font-size: 20px;
     display: inline-block;
     font-weight: 600;
     margin-top: 15px;
+}
+
+.product-list .product-item .product-price{
+    font-size: 20px;
+    font-weight: 600;
+    margin: 10px;
+}
+
+.filter{
+    width: 300px;
+    height: 100vh;
+    background-color: white;
+    border: 1px solid #dedede;
+    position: fixed;
+    z-index: 100;
+    top: 90px;
+}
+
+.size{
+    display: flex;
+    align-items: center;
+}
+
+.size input{
+    font-size: 20px;
+}
+
+.size p {
+    margin: 0;
+    padding-left: 10px;
+    font-size: 20px;
+}
+
+.price{
+    display: flex;
+    align-items: center;
+}
+
+.price p {
+    margin: 0;
+    padding-left: 10px;
+    font-size: 20px;
+}
+
+.filterwrapper{
+    padding: 30px 30px;
+}
+
+.price-list{
+    margin-top: 60px;
 }

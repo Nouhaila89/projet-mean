@@ -4,4 +4,6 @@ export class RequestModel{
     search: string = "";
     categoryName: string = "Tümü";
     categoryId: string = "";
+    priceFilter: string = "0";
+    sizeFilter: string = "";
 }

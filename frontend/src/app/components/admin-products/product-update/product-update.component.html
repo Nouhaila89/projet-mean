@@ -114,17 +114,16 @@
       </div>
       <div class="form-group mt-2">
         <label for="description">Açıklama</label>
-        <input
-          type="text"
-          name="description"
-          id="description"
-          [(ngModel)]="product.description"
-          required
-          #description
-          min="1"
-          class="form-control"
-          [appValid]="description.validity.valid"
-        />
+        <textarea type="text"
+        name="description"
+        id="description"
+        [(ngModel)]="product.description"
+        required
+        #description
+        min="1"
+        class="form-control"
+        [appValid]="description.validity.valid">
+        </textarea>
         <div class="invalid-feedback">Ürün birim fiyatı en az 1 olmalıdır!</div>
       </div>
       <div class="form-group mt-2">

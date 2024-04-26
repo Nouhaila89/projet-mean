@@ -26,6 +26,10 @@ ul,ol{
     
 }
 
+.container1{
+    padding-left: 200px;
+}
+
 .widgets-row .footer-widgets{
     display: flex;
     justify-content: space-between;

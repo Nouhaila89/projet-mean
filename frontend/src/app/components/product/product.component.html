@@ -1,5 +1,5 @@
-<section style="margin-top: 91px;">
-    <div class="container">
+<section style="margin-top: 110px;">
+    <div class="container1">
         <div class="categories-links">
             <ul class="categories-list">
                 <li  (click)="changeCategory('','Tümü')"  class="center-list-item" [ngClass]="request.categoryName == 'Tümü' ? 'active' : ''">Tümü</li>
@@ -10,11 +10,14 @@
         </div>
         <div class="product-wrapper">
             <div style="display: flex;">
-                <div class="mb-3" style="width: 750px; margin-right: 10px;">
+                <div>
+                    <button (click)="toggleFilter()" style="width: 200px; margin-right: 690px;" class="btn btn-dark">Filtreler</button>
+                </div>
+                <div class="mb-3" style="width: 1400px; margin-right: 10px;">
                     <input type="search" [(ngModel)]="request.search" class="form-control" placeholder="Arancak değeri yazınız">
                 </div>
                 <div>
-                    <button style="width: 100px;" (click)="getAll()" class="btn btn-dark">Ara</button>
+                    <button style="width: 150px;" (click)="getAll()" class="btn btn-dark">Ara</button>
                 </div>
             </div>
             <ul class="product-list">
@@ -33,5 +36,47 @@
                 </li>
             </ul>
         </div>
+
+    </div>
+    <div *ngIf="isFilterVisible" class="filter">
+        <div (click)="toggleFilter()" style="float: right; font-size: 20px; padding: 5px; cursor: pointer;"><i class="bi bi-x-lg"></i></div>
+        <div class="filterwrapper">
+            <div>
+                <label for="" style="font-size: 30px;">BEDEN</label>
+                <div class="size">
+                    <input type="checkbox" (change)="toggleSizeFilter('S')">
+                    <p>S</p>
+                </div>
+                <div class="size">
+                    <input type="checkbox" (change)="toggleSizeFilter('M')">
+                    <p>M</p>
+                </div>
+                <div class="size">
+                    <input type="checkbox" (change)="toggleSizeFilter('L')">
+                    <p>L</p>
+                </div>
+                <div class="size">
+                    <input type="checkbox" (change)="toggleSizeFilter('XL')">
+                    <p>XL</p>
+                </div>
+            </div>
+            <div class="price-list">
+                <label for="" style="font-size: 30px;">FİYAT</label>
+                <div class="price">
+                    <input type="checkbox" (change)="togglePriceFilter(1, 4)">
+                    <p>1 TL - 4 TL</p>
+                </div>
+                <div class="price">
+                    <input type="checkbox" (change)="togglePriceFilter(5, 8)">
+                    <p>5 TL - 8 TL</p>
+                </div>
+                <div class="price">
+                    <input type="checkbox" (change)="togglePriceFilter(9, 13)">
+                    <p>9 TL - 13 TL</p>
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-dark" (click)="applyFilters()" style="margin-left: 20px; width: 90%;">UYGULA</button>
+        
     </div>
 </section>
