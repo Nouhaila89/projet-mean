@@ -16,13 +16,13 @@
             <th scope="col">#</th>
             <th scope="col">Ürün Resmi</th>
             <th scope="col">Ürün Adı</th>
-            <th scope="col">Kataegoriler</th>
+            <!-- <th scope="col">Kataegoriler</th> -->
+            <!-- <th scope="col">Stok Bilgisi</th>
             <th scope="col">Stok Bilgisi</th>
             <th scope="col">Stok Bilgisi</th>
-            <th scope="col">Stok Bilgisi</th>
-            <th scope="col">Stok Bilgisi</th>
-            <th scope="col">Birim Fiyatı</th>
-            <th scope="col">Açıklama</th>
+            <th scope="col">Stok Bilgisi</th> -->
+            <!-- <th scope="col">Birim Fiyatı</th>
+            <th scope="col">Açıklama</th> -->
             <th scope="col">Oluşturulma Tarihi</th>
             <th scope="col">Aktif/Pasif</th>
             <th scope="col">İşlemler</th>
@@ -32,22 +32,22 @@
           <tr *ngFor="let product of result.datas let index = index">
             <th scope="row">{{index + 1}}</th>
             <td>
-              <img [src]="'http://localhost:5000/' + product.imageUrls[0].path" width="50">
+              <img [src]="'http://localhost:5000/' + product.imageUrls[0].path" width="90" height="120"/>
             </td>
             <td>{{product.name}}</td>
-            <td>
+            <!-- <td>
               <ul>
                 <li *ngFor="let category of product.categories">
                   {{category.name}}
                 </li>
               </ul>
-            </td>
-            <td>{{product.stockS}}</td>
+            </td> -->
+            <!-- <td>{{product.stockS}}</td>
             <td>{{product.stockM}}</td>
             <td>{{product.stockX}}</td>
-            <td>{{product.stockXl}}</td>
-            <td>{{product.price}}</td>
-            <td>{{product.description}}</td>
+            <td>{{product.stockXl}}</td> -->
+            <!-- <td>{{product.price}}</td>
+            <td>{{product.description}}</td> -->
             <td>{{product.createdDate | date: 'dd.MM.yyyy HH:mm:sss'}}</td>
             <td>
               <div class="form-check">

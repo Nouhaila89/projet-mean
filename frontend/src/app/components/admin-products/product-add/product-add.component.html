@@ -1,5 +1,5 @@
 <div class="content-wrapper row-center">
-  <div class="ml-3">
+  <div class="ml-4 mb-3">
     <h3 style="font-size: 30px">Ürün Ekleme Sayfası</h3>
   </div>
   <div class="col-md-6 ml-3 mt-4">
@@ -34,65 +34,67 @@
           </option>
         </select>
       </div>
-      <div class="form-group mt-2">
-        <label for="stockS">StokS Adedi</label>
-        <input
-          type="number"
-          name="stockS"
-          id="stockS"
-          ngModel
-          required
-          #stockS
-          min="1"
-          class="form-control"
-          [appValid]="stockS.validity.valid"
-        />
-        <div class="invalid-feedback">Ürün stok adedi en az 1 olmalıdır!</div>
-      </div>
-      <div class="form-group mt-2">
-        <label for="stockM">StokM Adedi</label>
-        <input
-          type="number"
-          name="stockM"
-          id="stockM"
-          ngModel
-          required
-          #stockM
-          min="1"
-          class="form-control"
-          [appValid]="stockM.validity.valid"
-        />
-        <div class="invalid-feedback">Ürün stok adedi en az 1 olmalıdır!</div>
-      </div>
-      <div class="form-group mt-2">
-        <label for="stockX">StokX Adedi</label>
-        <input
-          type="number"
-          name="stockX"
-          id="stockX"
-          ngModel
-          required
-          #stockX
-          min="1"
-          class="form-control"
-          [appValid]="stockX.validity.valid"
-        />
-        <div class="invalid-feedback">Ürün stok adedi en az 1 olmalıdır!</div>
-      </div>
-      <div class="form-group mt-2">
-        <label for="stockXl">StokXl Adedi</label>
-        <input
-          type="number"
-          name="stockXl"
-          id="stockXl"
-          ngModel
-          required
-          #stockXl
-          min="1"
-          class="form-control"
-          [appValid]="stockXl.validity.valid"
-        />
-        <div class="invalid-feedback">Ürün stok adedi en az 1 olmalıdır!</div>
+      <div class="d-flex">
+        <div class="form-group mt-2 mr-2">
+          <label for="stockS">S Beden Stok</label>
+          <input
+            type="number"
+            name="stockS"
+            id="stockS"
+            ngModel
+            required
+            #stockS
+            min="1"
+            class="form-control"
+            [appValid]="stockS.validity.valid"
+          />
+          <div class="invalid-feedback">Ürün stok adedi en az 1 olmalıdır!</div>
+        </div>
+        <div class="form-group mt-2 mr-2">
+          <label for="stockM">M Beden Stok</label>
+          <input
+            type="number"
+            name="stockM"
+            id="stockM"
+            ngModel
+            required
+            #stockM
+            min="1"
+            class="form-control"
+            [appValid]="stockM.validity.valid"
+          />
+          <div class="invalid-feedback">Ürün stok adedi en az 1 olmalıdır!</div>
+        </div>
+        <div class="form-group mt-2 mr-2">
+          <label for="stockX">X Beden Stok</label>
+          <input
+            type="number"
+            name="stockX"
+            id="stockX"
+            ngModel
+            required
+            #stockX
+            min="1"
+            class="form-control"
+            [appValid]="stockX.validity.valid"
+          />
+          <div class="invalid-feedback">Ürün stok adedi en az 1 olmalıdır!</div>
+        </div>
+        <div class="form-group mt-2">
+          <label for="stockXl">XL Beden Stok</label>
+          <input
+            type="number"
+            name="stockXl"
+            id="stockXl"
+            ngModel
+            required
+            #stockXl
+            min="1"
+            class="form-control"
+            [appValid]="stockXl.validity.valid"
+          />
+          <div class="invalid-feedback">Ürün stok adedi en az 1 olmalıdır!</div>
+        </div>
       </div>
       <div class="form-group mt-2">
         <label for="price">Birim Fiyatı</label>
@@ -115,6 +117,7 @@
         name="description"
         id="description"
         ngModel
+        rows="5"
         required
         #description
         min="1"
