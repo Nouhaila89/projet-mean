@@ -43,7 +43,7 @@ export class AdminCouponComponent {
         let element = document.getElementById("addModelCloseBtn");
         element?.click();
         form.reset();
-        this.getAll();
+        this.getAll(); 
       }); 
     }
   }
