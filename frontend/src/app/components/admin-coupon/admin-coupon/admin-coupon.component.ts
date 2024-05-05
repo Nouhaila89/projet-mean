@@ -44,7 +44,7 @@ export class AdminCouponComponent {
         element?.click();
         form.reset();
         this.getAll();
-      });
+      }); 
     }
   }
 
