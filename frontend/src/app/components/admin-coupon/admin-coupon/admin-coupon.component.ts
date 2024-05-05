@@ -37,7 +37,7 @@ export class AdminCouponComponent {
       let coupon = new CouponModel(); 
       coupon.name = form.value["name"]; 
       coupon.discountRate = form.value["discountRate"]; 
-
+ 
       this._coupon.add(coupon,res=>{
         this._toastr.success(res.message);
         let element = document.getElementById("addModelCloseBtn");
