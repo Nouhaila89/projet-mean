@@ -63,19 +63,19 @@
             <div class="price-list">
                 <label for="" style="font-size: 30px;">FİYAT</label>
                 <div class="price">
-                    <input type="checkbox" (change)="togglePriceFilter(1, 4)">
+                    <input type="radio" name="price" (change)="togglePriceFilter(1, 4)">
                     <p>1 TL - 4 TL</p>
                 </div>
-                <div class="price">
-                    <input type="checkbox" (change)="togglePriceFilter(5, 8)">
+                <div class="price"> 
+                    <input type="radio" name="price" (change)="togglePriceFilter(5, 8)">
                     <p>5 TL - 8 TL</p>
                 </div>
                 <div class="price">
-                    <input type="checkbox" (change)="togglePriceFilter(9, 13)">
+                    <input type="radio" name="price" (change)="togglePriceFilter(9, 13)">
                     <p>9 TL - 13 TL</p>
                 </div>
                 <div class="price">
-                    <input type="checkbox" (change)="togglePriceFilter(14, 900)">
+                    <input type="radio" name="price" (change)="togglePriceFilter(14, 900)">
                     <p>14 TL - 900 TL</p>
                 </div>
             </div>

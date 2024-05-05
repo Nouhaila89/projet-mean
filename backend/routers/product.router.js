@@ -153,22 +153,17 @@ router.post("/changeActiveStatus", async(req, res)=>{
 
 router.post("/getAllForHomePage", async (req, res) => {
     response(res, async () => {
-        const { pageNumber, pageSize, search, categoryId, priceFilter, sizeFilter } = req.body;
+        const { search, categoryId, priceFilter, sizeFilter } = req.body;
         let products;
 
-        // Fiyat filtresi
         let priceQuery = {};
         if (priceFilter !== "0") {
-            // Fiyat aralığını parçalara ayır
             const [minPrice, maxPrice] = priceFilter.split('-').map(parseFloat);
-            // Fiyata göre filtreleme
             priceQuery = { price: { $gte: minPrice, $lte: maxPrice } };
         }
 
-        // Beden filtresi
         let sizeQuery = {};
         if (sizeFilter !== "") {
-            // Seçilen bedene göre uygun stok alanını seç
             let stockField;
             switch (sizeFilter) {
                 case "S":
@@ -186,11 +181,9 @@ router.post("/getAllForHomePage", async (req, res) => {
                 default:
                     break;
             }
-            // Beden filtresini kullanıcıdan gelen bedene göre ayarla
             sizeQuery = { [stockField]: { $gt: 0 } };
         }
 
-        // Ürünleri getir
         products = await Product
             .find({
                 isActive: true,
@@ -206,6 +199,19 @@ router.post("/getAllForHomePage", async (req, res) => {
     });
 });
 
+router.post("/getAllForHome", async(req,res)=>{
+    response(res, async()=>{
+        let products;
+        products = await Product
+            .find({
+                isActive: true,
+            })
+            .sort({createdDate: -1}) 
+            .limit(4); 
+
+        res.json(products);
+    })
+})
 
 
 module.exports = router;

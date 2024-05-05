@@ -40,5 +40,61 @@
                 <p>{{product.description}}</p>
             </div>
         </div>
+        <hr>
+        <div class="reviews-wrapper">
+            <div class="col-md-8">
+                <div>
+                    <h2>Yorumlar</h2>
+                </div>
+                <form #reviewsaddForm="ngForm" autocomplete="off" (ngSubmit)="addReviews(reviewsaddForm, product._id)">
+                    <input type="hidden" name="productId" [value]="product._id">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Ad Soyad</label>
+                    <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    ngModel
+                    required
+                    #name
+                    minlength="3"
+                    class="form-control"
+                    [appValid]="name.validity.valid"
+                  />
+                  <div class="invalid-feedback">Ürün adı en az 3 karakter olmalıdır!</div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="description" class="form-label">Mesajınız</label>
+                    <textarea type="text"
+                    name="description"
+                    id="description"
+                    ngModel
+                    rows="4"
+                    required
+                    #description
+                    min="1"
+                    class="form-control"
+                    [appValid]="description.validity.valid">
+                    </textarea>
+                    <div class="invalid-feedback">Açıklama giriniz</div>
+                  </div>
+                  <button class="btn btn-dark">Gönder</button>
+                </form>
+            </div>
+        </div>
+        <hr>
+        <div class="reviews"  *ngFor="let review of reviews">
+            <div class="date-wrapper">
+                <div class="reviews-name">
+                    {{review.name}}
+                </div>
+                <div class="tarih">
+                    {{review.createdDate | date: 'dd.MM.yyyy'}}
+                </div>
+            </div>
+            <div class="reviews-yorum">
+                {{review.description}}
+            </div>
+        </div>
     </div>
 </section>

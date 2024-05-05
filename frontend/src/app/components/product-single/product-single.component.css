@@ -100,6 +100,43 @@ ul,ol{
     background-color: #000;
 }
 
+.form-control:focus {
+    outline: none;
+    box-shadow: none; /* Opsiyonel olarak gölgeyi kaldırabilirsiniz */
+    border: 1px solid #000;
+}
+ 
+
+.container .reviews-wrapper{
+    display: flex;
+    justify-content: center;
+}
+
+.reviews{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+    height: 130px;
+    border-bottom: 1px solid #dee0ea;
+}
+
+.reviews-name{
+    margin: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.reviews .date-wrapper{
+    display: flex;
+    justify-content: space-between;
+}
+
+.date-wrapper .tarih{
+    margin: 10px;
+}
+.reviews-yorum{
+    margin: 10px;
+}
 
 
 /* .container {

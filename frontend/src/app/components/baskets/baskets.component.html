@@ -36,7 +36,11 @@
             <h6>Toplam Tutar(KDV Dahil): {{sum}} TL</h6>
             <h6>Kargo Ücreti: 0.00 TL</h6>
             <h5>Ödenecek Tutar: {{sum}} TL</h5>
-            <button routerLink="/payment" class="btn btn-dark">Satın Al</button>
+            <div style="display: flex;">
+            <input type="text" class="kupon" placeholder="Kubon Girin">
+            <button class="btn btn-dark">Uygula</button>
+            </div>
+            <button (click)="kontrol()" class="btn btn-dark satinAlButton">Satın Al</button>
             </div>
         </div>
     </div>

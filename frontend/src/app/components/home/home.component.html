@@ -2,7 +2,11 @@
   <div class="slider-elements">
     <div class="slider-item">
       <div class="slider-image">
-        <img src="../../../assets/img2/erkekmaindesk1203_1.jpeg" class="img-fluid" alt="" />
+        <img
+          src="../../../assets/img2/erkekmaindesk1203_1.jpeg"
+          class="img-fluid"
+          alt=""
+        />
       </div>
       <div class="container1">
         <p class="slider-title">İÇGÜDÜSEL VE BENZERSİZ</p>
@@ -21,6 +25,35 @@
       </button>
     </div> -->
   </div>
+</section>
+
+<section>
+  <div class="product-wrapper">
+    <div>
+      <h1>Yeni Ürünler</h1>
+    </div>
+    <div>
+      <ul class="product-list">
+        <li class="product-item" *ngFor="let product of products; let i = index">
+          <div class="product-image">
+            <a routerLink="/product-single/{{ product._id }}">
+              <img
+                [src]="'http://localhost:5000/' + product.imageUrls[0].path"
+                alt=""
+              />
+            </a>
+          </div>
+          <div class="product-info">
+            <a href="#" class="product-title">{{ product.name }}</a>
+            <div class="product-price">
+              <strong>{{ product.price }} TL</strong>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+</div>
 </section>
 
 <section class="campaigns">

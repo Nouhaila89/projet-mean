@@ -15,9 +15,10 @@
 .cart-total{
     margin-left: 80px;
     border: 1px solid #ccc;
+    height: 340px;
 }
 
-.cart-total button{
+.cart-total .satinAlButton{
     margin-top: 30px;
     width: 100%;
 }
@@ -34,4 +35,23 @@
 img{
     width: 60px;
     height: 75px;
+}
+
+.cart-total .kupon{
+    margin-top: 10px;
+    height: 38px;
+    margin-right: 15px;
+    width: 220px;
+    font-size: 18px;
+    border: 1px solid #ccc;
+}
+.cart-total button{
+    margin-top: 10px;
+    height: 38px;
+}
+
+.cart-total .kupon:focus {
+    outline: none;
+    box-shadow: none; /* Opsiyonel olarak gölgeyi kaldırabilirsiniz */
+    border: 1px solid #000;
 }

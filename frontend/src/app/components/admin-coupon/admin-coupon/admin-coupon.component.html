@@ -1,13 +1,13 @@
 <div class="content-wrapper">
     <div style="margin: 0px 20px;">
         <div style="font-size: 30px;">
-           Kategori Listesi 
+           Kupon Listesi 
         </div>
         <div style="margin: 20px 0px;"> 
           <div class="col-md-3" style="float: left; margin-left: -10px;">
-            <input type="search" [(ngModel)]="search" class="form-control" placeholder="Arancak değeri yazınız...">
+            <!-- <input type="search" [(ngModel)]="search" class="form-control" placeholder="Arancak değeri yazınız..."> -->
           </div>         
-            <button class="btn btn-dark" style="margin-left: 20px; width: 185px;" data-bs-toggle="modal" data-bs-target="#addModal">Kategori Ekle</button>
+            <button class="btn btn-dark" style="margin-left: 20px; width: 185px;" data-bs-toggle="modal" data-bs-target="#addModal">Kupon Ekle</button>
             
         </div>
        <div>
@@ -15,15 +15,17 @@
             <thead>
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">Kategori Adı</th>
+                <th scope="col">Kupon Adı</th>
+                <th scope="col">Kupon Oranı</th>
                 <th scope="col" style="width: 200px;">İşlemler</th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let category of categories | categoryPipe: search let index = index">
+              <tr *ngFor="let coupon of coupons let index = index">
                 <th scope="row">{{index + 1}}</th>
-                <td>{{category.name}}</td>
-                <td><button class="btn btn-dark" style="margin: 0px 5px;" (click)="get(category)" data-bs-toggle="modal" data-bs-target="#updateModal">Güncelle</button><button (click)="removeById(category)" class="btn btn-danger">Sil</button></td>
+                <td>{{coupon.name}}</td>
+                <td>{{coupon.discountRate}}</td>
+                <td><button class="btn btn-dark" style="margin: 0px 5px;" (click)="get(coupon)" data-bs-toggle="modal" data-bs-target="#updateModal">Güncelle</button><button (click)="removeById(coupon)" class="btn btn-danger">Sil</button></td>
               </tr>                   
             </tbody>
           </table>
@@ -41,8 +43,12 @@
       </div>
       <form autocomplete="off" #updateForm="ngForm" (ngSubmit)="update(updateForm)">
       <div class="modal-body">
-        <label for="UpdateName">Kategori Adı</label>
-        <input type="text" [(ngModel)]="updateCategory.name" class="form-control" name="UpdateName" id="UpdateName" #UpdateName [appValid]="UpdateName.validity.valid" required>
+        <label for="UpdateName">Kupon Adı</label>
+        <input type="text" [(ngModel)]="updateCoupon.name" class="form-control" name="name" id="name" #name [appValid]="name.validity.valid" required>
+      </div>
+      <div class="modal-body">
+        <label for="UpdateName">Kupon Oranı</label>
+        <input type="text" [(ngModel)]="updateCoupon.discountRate" class="form-control" name="discountRate" id="discountRate" #discountRate [appValid]="discountRate.validity.valid" required>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
@@ -65,8 +71,12 @@
           </div>
           <form autocomplete="off" #addForm="ngForm" (ngSubmit)="add(addForm)">
           <div class="modal-body">
-            <label for="name">Kategori Adı</label>
-            <input type="text" [(ngModel)]="updateCategory.name" class="form-control" name="name" id="name" #name [appValid]="name.validity.valid" required>
+            <label for="name">Kupon Adı</label>
+            <input type="text" [(ngModel)]="updateCoupon.name" class="form-control" name="name" id="name" #name [appValid]="name.validity.valid" required>
+          </div>
+          <div class="modal-body">
+            <label for="name">Kupon Oranı</label>
+            <input type="text" [(ngModel)]="updateCoupon.discountRate" class="form-control" name="discountRate" id="discountRate" #discountRate [appValid]="discountRate.validity.valid" required>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>

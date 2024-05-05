@@ -6,6 +6,7 @@ import { SwalService } from '../../common/services/swal.service';
 import { BasketModel } from './models/basket.model';
 import { BasketService } from './service/basket.service';
 import { PaymentService } from '../payment/service/payment.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -23,7 +24,8 @@ constructor(
   private _basket: BasketService,
   private _toastr: ToastrService,
   private _swal: SwalService,
-  private _paymentService: PaymentService
+  private _paymentService: PaymentService,
+  private _router: Router
 ){}
 
   ngOnInit(): void {
@@ -95,5 +97,16 @@ isStockZero(basket: BasketModel): boolean {
     basket.selectedSize === 'M' && basket.products[0].stockM === 0 ||
     basket.selectedSize === 'X' && basket.products[0].stockX === 0 ||
     basket.selectedSize === 'XL' && basket.products[0].stockXl === 0;
+}
+
+kontrol(){
+  let userString = localStorage.getItem("user");
+  let user = JSON.parse(userString);
+  if(user){
+    this._router.navigateByUrl("payment")
+  }
+  else{
+    this._router.navigateByUrl("login");
+  }
 }
 }

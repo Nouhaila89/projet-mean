@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-adminnavbar',
@@ -8,5 +9,13 @@ import { Component } from '@angular/core';
   styleUrl: './adminnavbar.component.css'
 })
 export class AdminnavbarComponent {
-
+  constructor(
+    private _router: Router
+  ){
+    
+  }
+cikis(){
+  localStorage.removeItem("user");
+  this._router.navigateByUrl("login");
+}
 }

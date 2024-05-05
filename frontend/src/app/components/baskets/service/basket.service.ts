@@ -24,18 +24,14 @@ export class BasketService {
     let userString = localStorage.getItem("user");
     let user = JSON.parse(userString);
     let userId = user ? user._id : null; // Eğer user null ise userId null olacak
-    if (userId) {
       let model = { userId: userId };
       this._http.post<any>("baskets/getCount", model, res => {
         if (res && res.count) {
           this.count = res.count;
         } else {
-          this.count = 0;
+          // this.count = 0;
         }
       });
-    } else {
-      this.count = 0; // user null ise count 0 olarak atanacak
-    }
   }
 
   add(model: BasketModel, callBack: (res: MessageResponseModel) => void) {

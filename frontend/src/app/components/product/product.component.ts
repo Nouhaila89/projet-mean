@@ -17,6 +17,7 @@ export class ProductComponent implements OnInit {
   categories: CategoryModel[] = [];
   request: RequestModel = new RequestModel();
   products: ProductModel[] = [];
+  isFilterVisible: boolean = false;
 
   constructor(
     private _category: CategoryService,
@@ -44,19 +45,13 @@ export class ProductComponent implements OnInit {
     this.getAll();
   }
 
-  isFilterVisible: boolean = false;
 
   toggleFilter() {
       this.isFilterVisible = !this.isFilterVisible;
   }
 
   togglePriceFilter(min: number, max: number) {
-    if (this.request.priceFilter === `${min}-${max}`) {
-        this.request.priceFilter = "0";
-        this.getAll()
-    } else {
-        this.request.priceFilter = `${min}-${max}`;
-    }
+    this.request.priceFilter = `${min}-${max}`;
 }
 
 toggleSizeFilter(size: string) {
@@ -65,5 +60,8 @@ toggleSizeFilter(size: string) {
 
 applyFilters() {
   this.getAll();
+  this.toggleFilter();
+  this.request.priceFilter = "0";
+  this.request.sizeFilter = "";
 }
 }

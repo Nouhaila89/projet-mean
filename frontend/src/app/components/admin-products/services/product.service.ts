@@ -45,4 +45,8 @@ export class ProductService {
   getAllForHomePage(model: RequestModel, callBack: (res: ProductModel[])=>void){
     this._http.post<ProductModel[]>("products/getAllForHomePage", model, res=> callBack(res));
   }
+
+  getAllForHome(model: RequestModel, callBack: (res: ProductModel[])=>void){
+    this._http.post<ProductModel[]>("products/getAllForHome", model, res=> callBack(res));
+  }
 }
