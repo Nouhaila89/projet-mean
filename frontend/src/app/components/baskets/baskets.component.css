@@ -52,6 +52,6 @@ img{
 
 .cart-total .kupon:focus {
     outline: none;
-    box-shadow: none; /* Opsiyonel olarak gölgeyi kaldırabilirsiniz */
+    box-shadow: none; 
     border: 1px solid #000;
 }

@@ -37,11 +37,10 @@
             <h6>Kargo Ücreti: 0.00 TL</h6>
             <h5>Ödenecek Tutar: {{sum}} TL</h5>
             <div style="display: flex;">
-            <input type="text" class="kupon" placeholder="Kubon Girin">
-            <button class="btn btn-dark">Uygula</button>
-            </div>
+              <input type="text" class="kupon" placeholder="Kupon Girin" [(ngModel)]="couponName">
+              <button class="btn btn-dark" (click)="applyCoupon(couponName)">Uygula</button>
+            </div>            
             <button (click)="kontrol()" class="btn btn-dark satinAlButton">Satın Al</button>
             </div>
         </div>
-    </div>
 </div>

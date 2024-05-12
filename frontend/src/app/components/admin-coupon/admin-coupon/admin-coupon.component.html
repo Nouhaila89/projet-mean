@@ -3,12 +3,8 @@
         <div style="font-size: 30px;">
            Kupon Listesi 
         </div>
-        <div style="margin: 20px 0px;"> 
-          <div class="col-md-3" style="float: left; margin-left: -10px;">
-            <!-- <input type="search" [(ngModel)]="search" class="form-control" placeholder="Arancak değeri yazınız..."> -->
-          </div>         
-            <button class="btn btn-dark" style="margin-left: 20px; width: 185px;" data-bs-toggle="modal" data-bs-target="#addModal">Kupon Ekle</button>
-            
+        <div style="margin: 20px 0px;">       
+            <button class="btn btn-dark" style="margin-left: 400px; width: 200px;" data-bs-toggle="modal" data-bs-target="#addModal">Kupon Ekle</button>
         </div>
        <div>
         <table class="table" style="margin: 0px; width: 600px;">
@@ -38,7 +34,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="updateModalLabel">Kategori Güncelle</h1>
+        <h1 class="modal-title fs-5" id="updateModalLabel">Kupon Güncelle</h1>
         <button type="button" id="updateModalCLoseBtn" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <form autocomplete="off" #updateForm="ngForm" (ngSubmit)="update(updateForm)">
@@ -66,7 +62,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="addModalLabel">Kategori Ekle</h1>
+            <h1 class="modal-title fs-5" id="addModalLabel">Kupon Ekle</h1>
             <button type="button" id="addModalCLoseBtn" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <form autocomplete="off" #addForm="ngForm" (ngSubmit)="add(addForm)">

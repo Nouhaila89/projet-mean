@@ -5,6 +5,8 @@ export class OrderModel{
     productId: string = "";
     products: ProductModel[] = [];
     price: number = 0;
+    name: string = "";
+    address: string = "";
     size: string = "";
     quantity: number = 0;
     createdDate: string = "";

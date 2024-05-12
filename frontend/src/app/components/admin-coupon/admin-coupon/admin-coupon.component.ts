@@ -64,7 +64,7 @@ export class AdminCouponComponent {
   }
 
   removeById(model: CouponModel){
-    this._swal.callSwal(`${model.name} kategorisini silmek istiyormusunuz`, "" ,"Sil",()=>{
+    this._swal.callSwal(`${model.name} kuponunu silmek istiyormusunuz`, "" ,"Sil",()=>{
       this._coupon.removeById(model._id,res=>{
         this._toastr.info(res.message);
         this.getAll();

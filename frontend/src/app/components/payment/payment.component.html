@@ -1,6 +1,19 @@
 <div class="d-flex justify-content-center" style="margin-top: 50px; margin-bottom: 50px; margin-top: 150px;">
+  <div class="address-wrapper">
+    <div>
+      <h4>ADRES BİLGİLER</h4>
+      <div class="address-item">
+        <label for="">AD - SOYAD</label>
+        <input type="text" name="name" [(ngModel)]="name">
+      </div>
+      <div class="address-item">
+        <label for="">ADRES</label>
+        <input type="text" [(ngModel)]="address">
+      </div>
+    </div>
+  </div>
     <div style="width: 400px">
-      <div class="card"  style="border-radius: 0;">
+      <div class="card"  style="border-radius: 0; border: 1px solid #ccc;">
         <div class="mt-4">
           <h2 class="text-center">Ödeme İşlemi</h2>
         </div>

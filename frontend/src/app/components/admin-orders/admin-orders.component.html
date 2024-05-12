@@ -6,7 +6,9 @@
         <table class="table">
             <thead>
               <tr>
-                <th scope="col">#</th>
+                <th scope="col">Sipariş Tarihi</th>
+                <th scope="col">Müşteri Adı</th>
+                <th scope="col">Teslimat Adres</th>
                 <th scope="col">Ürün Resmi</th>
                 <th scope="col">Ürün Adı</th>
                 <th scope="col">Beden</th>
@@ -18,6 +20,8 @@
             <tbody>
               <tr *ngFor="let order of orders">
                 <td>{{order.createdDate |date: 'dd.MM.yyyy HH:mm:ss'}}</td>
+                <td>{{order.name}}</td>
+                <td>{{order.address}}</td>
                 <td>
                     <img [src]="'http://localhost:5000/' + order?.products[0]?.imageUrls[0]?.path" width="90" height="120"/>
                 </td>

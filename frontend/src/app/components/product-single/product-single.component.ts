@@ -9,6 +9,8 @@ import { ToastrService } from 'ngx-toastr';
 import { ReviewsService } from './services/reviews.service';
 import { NgForm } from '@angular/forms';
 import { ReviewsModel } from './models/reviews.model';
+import { CouponModel } from '../admin-coupon/models/coupon.model';
+import { CouponService } from '../admin-coupon/services/coupon.service';
 
 @Component({
   selector: 'app-product-single',
@@ -23,14 +25,14 @@ export class ProductSingleComponent implements OnInit{
   selectedImage: string = '';
   thumbnailImages: string[] = [];
   selectedSize: string = '';
-  reviews: ReviewsModel[] = []
+  reviews: ReviewsModel[] = [];
 
   constructor(
     private _product: ProductService,
     private _activated: ActivatedRoute,
     private _basket: BasketService,
     private _toastr: ToastrService,
-    private _reviews: ReviewsService
+    private _reviews: ReviewsService,
   ) {
 
   }
@@ -87,4 +89,5 @@ export class ProductSingleComponent implements OnInit{
       });
     }
   }
+
 }

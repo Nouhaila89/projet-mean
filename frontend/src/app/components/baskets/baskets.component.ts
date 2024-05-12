@@ -7,6 +7,8 @@ import { BasketModel } from './models/basket.model';
 import { BasketService } from './service/basket.service';
 import { PaymentService } from '../payment/service/payment.service';
 import { Router } from '@angular/router';
+import { CouponService } from '../admin-coupon/services/coupon.service';
+import { CouponModel } from '../admin-coupon/models/coupon.model';
 
 
 @Component({
@@ -18,18 +20,22 @@ import { Router } from '@angular/router';
 })
 export class BasketsComponent implements OnInit {
 baskets: BasketModel[] = [];
+coupons: CouponModel[] = [];
 sum: number = 0;
+couponName: string = ''; 
 
 constructor(
   private _basket: BasketService,
   private _toastr: ToastrService,
   private _swal: SwalService,
   private _paymentService: PaymentService,
-  private _router: Router
+  private _router: Router,
+  private _coupon: CouponService
 ){}
 
   ngOnInit(): void {
     this.getAll();
+    this.getCoupon()
   }
 
 getAll(){
@@ -92,6 +98,31 @@ changeQuantity(index: number, action: string) {
   });
 }
 
+applyCoupon(couponName: string) {
+  let found = false;
+  let discountRate = 0;
+
+  this.coupons.forEach(coupon => {
+    if (coupon.name === couponName) {
+      found = true;
+      discountRate = coupon.discountRate;
+    }
+  });
+
+  if (found) {
+    if (discountRate > 0) {
+      this.sum -= (this.sum * (discountRate / 100));
+      this._toastr.success(`Kupon başarıyla uygulandı. İndirim oranı: ${discountRate}%`);
+      this._paymentService.setSum(this.sum);
+    } else {
+      this._toastr.error('Kupon indirim oranı geçersiz.');
+    }
+  } else {
+    this._toastr.error('Girilen kupon bulunamadı.');
+  }
+}
+
+
 isStockZero(basket: BasketModel): boolean {
   return basket.selectedSize === 'S' && basket.products[0].stockS === 0 ||
     basket.selectedSize === 'M' && basket.products[0].stockM === 0 ||
@@ -108,5 +139,9 @@ kontrol(){
   else{
     this._router.navigateByUrl("login");
   }
+}
+
+getCoupon(){
+  this._coupon.getAll(res => this.coupons = res);
 }
 }

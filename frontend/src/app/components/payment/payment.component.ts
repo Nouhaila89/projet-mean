@@ -5,6 +5,7 @@ import { SharedModule } from '../../common/shared/shared.module';
 import { ToastrService } from 'ngx-toastr';
 import { OrderService } from '../orders/services/order.service';
 import { BasketService } from '../baskets/service/basket.service';
+import { OrderModel } from '../orders/models/order.model';
 
 @Component({
   selector: 'app-payment',
@@ -16,8 +17,11 @@ import { BasketService } from '../baskets/service/basket.service';
 export class PaymentComponent implements OnInit {
   paymentModel: PaymentModel = new PaymentModel();
   paymentMessage: string = '';
+  name: string = "";
+  address: string = ""
 
-  constructor(private _paymentService: PaymentService,   private _toastr: ToastrService, private _order: OrderService, private _basket: BasketService) {}
+  constructor(private _paymentService: PaymentService,   private _toastr: ToastrService, private _order: OrderService, private _basket: BasketService) {
+  }
   ngOnInit(): void {
     this.paymentModel.price = this._paymentService.getSum(); 
   }
@@ -34,7 +38,14 @@ export class PaymentComponent implements OnInit {
   }
 
   createOrder(){
-      this._order.create(res=> {
+    let userString = localStorage.getItem("user");
+    let user = JSON.parse(userString);
+
+    let orders = new OrderModel;
+    orders.userId = user._id;
+    orders.name = this.name;
+    orders.address = this.address;
+      this._order.create(orders, res=> {
         this._toastr.success(res.message);
       });
   }

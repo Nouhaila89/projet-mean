@@ -7,7 +7,7 @@ const response = require("../services/response.service");
 
 router.post("/create",async(req, res)=> {
     response(res, async()=>{
-        const {userId} = req.body;
+        const {userId, name, address} = req.body;
         let baskets = await Basket.find({userId: userId});
 
         for(const basket of baskets){
@@ -15,6 +15,8 @@ router.post("/create",async(req, res)=> {
             order._id = uuidv4();
             order.productId = basket.productId;
             order.price = basket.price;
+            order.name = name;
+            order.address = address;
             order.size = basket.selectedSize;
             order.quantity = basket.quantity;
             order.userId = userId;

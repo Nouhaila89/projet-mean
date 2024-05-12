@@ -1,0 +1,30 @@
+.address-wrapper{
+    margin-right: 40px;
+    border: 1px solid #ccc;
+    height: 340px;
+}
+
+.address-wrapper h4{
+    padding: 20px;
+    border-bottom: 1px solid #ccc;
+}
+
+.address-wrapper .address-item{
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.address-item input{
+    margin-top: 10px;
+    height: 38px;
+    margin-right: 15px;
+    width: 300px;
+    font-size: 18px;
+    border: 1px solid #ccc;
+}
+.address-item input:focus {
+    outline: none;
+    box-shadow: none; 
+    border: 1px solid #000;
+}
