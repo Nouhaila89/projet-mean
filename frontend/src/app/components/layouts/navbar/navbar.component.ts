@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SharedModule } from '../../../common/shared/shared.module';
 import { BasketService } from '../../baskets/service/basket.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -9,10 +10,30 @@ import { BasketService } from '../../baskets/service/basket.service';
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit{
   constructor(
-    public _basket: BasketService
+    public _basket: BasketService,
+    private _router: Router
   ){
     this._basket.getCount();
+  }
+  ngOnInit(): void {
+    this.kontrol();
+  }
+
+  kontrol2: boolean = true;
+
+  kontrol(){
+    let userString = localStorage.getItem("user");
+    let user = JSON.parse(userString);
+    if(user){
+      this.kontrol2 = false;
+    }
+  }
+
+  cikis(){
+    localStorage.removeItem("user");
+    this.kontrol2 = true;
+    this._router.navigateByUrl("login");
   }
 }

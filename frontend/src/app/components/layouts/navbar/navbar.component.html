@@ -17,7 +17,7 @@
                             <li class="center-list-item">
                                 <a routerLink="/about" class="list-item-link">Hakkımızda</a>
                             </li>
-                            <li class="center-list-item">
+                            <li *ngIf="kontrol2 === false" class="center-list-item">
                                 <a routerLink="/orders" class="list-item-link">Siparişlerim</a>
                             </li>
                             <li class="center-list-item">
@@ -28,9 +28,12 @@
                 </div>
                 <div class="header-right">
                     <div class="header-right-links">                  
-                        <a routerLink="/login" class="header-account">
+                        <a *ngIf="kontrol2 === true" routerLink="/login" class="header-account">
                             <i class="bi bi-person"></i>
-                        </a>                        
+                        </a>     
+                        <a *ngIf="kontrol2 === false" (click)="cikis()" href="">
+                            <button style="padding: 0px 3px;" class="btn btn-dark">Çıkış</button>
+                        </a>                   
                         <div class="header-cart">
                             <a routerLink="/baskets" class="header-cart-link">
                                 <i class="bi bi-cart"></i>
