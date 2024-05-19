@@ -37,6 +37,7 @@ export class LoginComponent {
           this._router.navigateByUrl("/admin");
         } else {
           this._router.navigateByUrl("/");
+          window.location.reload();
         }
       })
     }

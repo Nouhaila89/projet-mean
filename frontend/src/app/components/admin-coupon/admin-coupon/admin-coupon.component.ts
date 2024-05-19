@@ -16,7 +16,6 @@ import { SharedModule } from '../../../common/shared/shared.module';
 export class AdminCouponComponent {
   coupons: CouponModel[] = [];
   updateCoupon: CouponModel = new CouponModel();
-  search: string = "";
 
   constructor(
     private _toastr: ToastrService,

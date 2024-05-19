@@ -55,7 +55,7 @@ header{
 }
 
 .header-left .logo{
-    font-size: 24px;
+    font-size: 26px;
     font-weight: 500;
     display: flex;
 }
@@ -67,7 +67,7 @@ header{
 }
 
 .header-center .center-list .list-item-link{
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 1.2;
@@ -96,6 +96,10 @@ header{
     align-items: center;
 }
 
+.header-right .header-right-links i{
+    font-size:  25px;
+}
+
 .header-right .bi-person{
     font-size: 23px;
 }
@@ -109,12 +113,16 @@ header{
     position: relative;
 }
 
+.header-right .header-cart i{
+    font-size: 23px;
+}
+
 .header-right .header-cart-link .cart-count{
-    width: 16px;
-    height: 16px;
+    width: 18px;
+    height: 18px;
     background-color: #000;
     color: white;
-    font-size: 10px;
+    font-size: 12px;
     border-radius: 100%;
     position: absolute;
     top: -10px;

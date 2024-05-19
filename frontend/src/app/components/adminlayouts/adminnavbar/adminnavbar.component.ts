@@ -14,7 +14,7 @@ export class AdminnavbarComponent {
   ){
     
   }
-cikis(){
+exit(){
   localStorage.removeItem("user");
   this._router.navigateByUrl("login");
 }

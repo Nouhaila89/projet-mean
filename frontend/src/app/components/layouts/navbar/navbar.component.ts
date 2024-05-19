@@ -18,22 +18,22 @@ export class NavbarComponent implements OnInit{
     this._basket.getCount();
   }
   ngOnInit(): void {
-    this.kontrol();
+    this.control();
   }
 
-  kontrol2: boolean = true;
+  result: boolean = true;
 
-  kontrol(){
+  control(){
     let userString = localStorage.getItem("user");
     let user = JSON.parse(userString);
     if(user){
-      this.kontrol2 = false;
+      this.result = false;
     }
   }
 
-  cikis(){
+  exit(){
     localStorage.removeItem("user");
-    this.kontrol2 = true;
+    this.result = true;
     this._router.navigateByUrl("login");
   }
 }

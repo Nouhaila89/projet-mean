@@ -1,48 +1,54 @@
 <header>
-    <div class="header-row">
-        <div class="container1">
-            <div class="header-wrapper">
-                <div class="header-left">
-                    <a routerLink="/" class="logo">CAN'S STORE</a>
-                </div>
-                <div class="header-center">
-                    <div class="header-center-links">
-                        <ul class="center-list">
-                            <li class="center-list-item">
-                                <a routerLink="/" class="list-item-link">Ana Sayfa</a>
-                            </li>
-                            <li class="center-list-item">
-                                <a routerLink="/product" class="list-item-link">Ürünler</a>
-                            </li>
-                            <li class="center-list-item">
-                                <a routerLink="/about" class="list-item-link">Hakkımızda</a>
-                            </li>
-                            <li *ngIf="kontrol2 === false" class="center-list-item">
-                                <a routerLink="/orders" class="list-item-link">Siparişlerim</a>
-                            </li>
-                            <li class="center-list-item">
-                                <a routerLink="/contact" class="list-item-link">İletişim</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="header-right">
-                    <div class="header-right-links">                  
-                        <a *ngIf="kontrol2 === true" routerLink="/login" class="header-account">
-                            <i class="bi bi-person"></i>
-                        </a>     
-                        <a *ngIf="kontrol2 === false" (click)="cikis()" href="">
-                            <button style="padding: 0px 3px;" class="btn btn-dark">Çıkış</button>
-                        </a>                   
-                        <div class="header-cart">
-                            <a routerLink="/baskets" class="header-cart-link">
-                                <i class="bi bi-cart"></i>
-                                <span class="cart-count">{{_basket.count}}</span>
-                            </a>   
-                        </div>                     
-                    </div>
-                </div>
-            </div>
+  <div class="header-row">
+    <div class="container1">
+      <div class="header-wrapper">
+        <div class="header-left">
+          <a routerLink="/" class="logo">CAN'S STORE</a>
         </div>
+        <div class="header-center">
+          <div class="header-center-links">
+            <ul class="center-list">
+              <li class="center-list-item">
+                <a routerLink="/" class="list-item-link">Ana Sayfa</a>
+              </li>
+              <li class="center-list-item">
+                <a routerLink="/product" class="list-item-link">Ürünler</a>
+              </li>
+              <li class="center-list-item">
+                <a routerLink="/about" class="list-item-link">Hakkımızda</a>
+              </li>
+              <li  class="center-list-item">
+                <a routerLink="/orders" class="list-item-link">Siparişlerim</a>
+              </li>
+              <li class="center-list-item">
+                <a routerLink="/contact" class="list-item-link">İletişim</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="header-right">
+          <div class="header-right-links">
+            <a
+              *ngIf="result === true"
+              routerLink="/login"
+              class="header-account"
+            >
+              <i class="bi bi-person"></i>
+            </a>
+            <a *ngIf="result === false" (click)="exit()" href="">
+              <button style="padding: 2px 10px" class="btn btn-dark">
+                Çıkış
+              </button>
+            </a>
+            <div class="header-cart">
+              <a routerLink="/baskets" class="header-cart-link">
+                <i class="bi bi-cart"></i>
+                <span class="cart-count">{{ _basket.count }}</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </header>

@@ -1,78 +1,160 @@
 <div class="content-wrapper">
-    <div style="margin: 0px 20px;">
-        <div style="font-size: 30px;">
-           Kategori Listesi 
-        </div>
-        <div style="margin: 20px 0px;"> 
-          <div class="col-md-3" style="float: left; margin-left: -10px;">
-            <input type="search" [(ngModel)]="search" class="form-control" placeholder="Arancak değeri yazınız...">
-          </div>         
-            <button class="btn btn-dark" style="margin-left: 20px; width: 185px;" data-bs-toggle="modal" data-bs-target="#addModal">Kategori Ekle</button>
-            
-        </div>
-       <div>
-        <table class="table" style="margin: 0px; width: 600px;">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Kategori Adı</th>
-                <th scope="col" style="width: 200px;">İşlemler</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let category of categories | categoryPipe: search let index = index">
-                <th scope="row">{{index + 1}}</th>
-                <td>{{category.name}}</td>
-                <td><button class="btn btn-dark" style="margin: 0px 5px;" (click)="get(category)" data-bs-toggle="modal" data-bs-target="#updateModal">Güncelle</button><button (click)="removeById(category)" class="btn btn-danger">Sil</button></td>
-              </tr>                   
-            </tbody>
-          </table>
-       </div>
+  <div style="margin: 0px 20px">
+    <div style="font-size: 30px">Kategori Listesi</div>
+    <div style="margin: 20px 0px">
+      <div class="col-md-3" style="float: left; margin-left: -10px">
+        <input
+          type="search"
+          [(ngModel)]="search"
+          class="form-control"
+          placeholder="Arancak değeri yazınız..."
+        />
+      </div>
+      <button
+        class="btn btn-dark"
+        style="margin-left: 20px; width: 185px"
+        data-bs-toggle="modal"
+        data-bs-target="#addModal"
+      >
+        Kategori Ekle
+      </button>
     </div>
-</div>
-
-    <!-- Ekleme Modal -->
-<div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="updateModalLabel">Kategori Güncelle</h1>
-        <button type="button" id="updateModalCLoseBtn" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <form autocomplete="off" #updateForm="ngForm" (ngSubmit)="update(updateForm)">
-      <div class="modal-body">
-        <label for="UpdateName">Kategori Adı</label>
-        <input type="text" [(ngModel)]="updateCategory.name" class="form-control" name="UpdateName" id="UpdateName" #UpdateName [appValid]="UpdateName.validity.valid" required>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
-        <button type="submit" class="btn btn-dark">Güncelle</button>
-      </div>
-    </form>
+    <div>
+      <table class="table" style="margin: 0px; width: 600px">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Kategori Adı</th>
+            <th scope="col" style="width: 200px">İşlemler</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="
+              let category of categories | categoryPipe : search;
+              let index = index
+            "
+          >
+            <th scope="row">{{ index + 1 }}</th>
+            <td>{{ category.name }}</td>
+            <td>
+              <button
+                class="btn btn-dark"
+                style="margin: 0px 5px"
+                (click)="get(category)"
+                data-bs-toggle="modal"
+                data-bs-target="#updateModal"
+              >
+                Güncelle</button
+              ><button (click)="removeById(category)" class="btn btn-danger">
+                Sil
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
 
-
-
-    <!-- Güncelle Modal -->
-    <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="addModalLabel">Kategori Ekle</h1>
-            <button type="button" id="addModalCLoseBtn" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <form autocomplete="off" #addForm="ngForm" (ngSubmit)="add(addForm)">
-          <div class="modal-body">
-            <label for="name">Kategori Adı</label>
-            <input type="text" [(ngModel)]="updateCategory.name" class="form-control" name="name" id="name" #name [appValid]="name.validity.valid" required>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
-            <button type="submit" class="btn btn-dark">Kaydet</button>
-          </div>
-        </form>
-        </div>
+<div
+  class="modal fade"
+  id="updateModal"
+  tabindex="-1"
+  aria-labelledby="updateModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="updateModalLabel">
+          Kategori Güncelle
+        </h1>
+        <button
+          type="button"
+          id="updateModalCLoseBtn"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
       </div>
+      <form
+        autocomplete="off"
+        #updateForm="ngForm"
+        (ngSubmit)="update(updateForm)"
+      >
+        <div class="modal-body">
+          <label for="UpdateName">Kategori Adı</label>
+          <input
+            type="text"
+            [(ngModel)]="updateCategory.name"
+            class="form-control"
+            name="UpdateName"
+            id="UpdateName"
+            #UpdateName
+            [appValid]="UpdateName.validity.valid"
+            required
+          />
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Kapat
+          </button>
+          <button type="submit" class="btn btn-dark">Güncelle</button>
+        </div>
+      </form>
     </div>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  id="addModal"
+  tabindex="-1"
+  aria-labelledby="addModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="addModalLabel">Kategori Ekle</h1>
+        <button
+          type="button"
+          id="addModalCLoseBtn"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <form autocomplete="off" #addForm="ngForm" (ngSubmit)="add(addForm)">
+        <div class="modal-body">
+          <label for="name">Kategori Adı</label>
+          <input
+            type="text"
+            [(ngModel)]="updateCategory.name"
+            class="form-control"
+            name="name"
+            id="name"
+            #name
+            [appValid]="name.validity.valid"
+            required
+          />
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Kapat
+          </button>
+          <button type="submit" class="btn btn-dark">Kaydet</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
