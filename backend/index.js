@@ -16,6 +16,7 @@ const paymentRouter = require("./routers/payment.router");
 const orderRouter = require("./routers/order.router");
 const reviewsRouter = require("./routers/reviews.router");
 const couponRouter = require("./routers/coupon.router");
+const contactRouter = require("./routers/contact.router");
 
 app.use("/api/auth", authRouter);
 app.use("/api/categories",categoryRouter);
@@ -25,6 +26,7 @@ app.use("/api/payme", paymentRouter);
 app.use("/api/orders", orderRouter);
 app.use("/api/reviews", reviewsRouter);
 app.use("/api/coupon", couponRouter);
+app.use("/api/contact", contactRouter);
 
 connection();
 

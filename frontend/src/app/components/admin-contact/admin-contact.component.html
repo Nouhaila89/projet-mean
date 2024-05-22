@@ -1,0 +1,27 @@
+<div class="content-wrapper">
+    <div style="margin: 0px 20px">
+      <div style="font-size: 30px">İletişim Listesi</div>
+
+      <div style="margin-top: 20px;">
+        <table class="table" style="margin: 0px; width: 600px">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Ad Soyad</th>
+              <th scope="col">Email Adresi</th>
+              <th scope="col">Mesaj</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let contact of contacts; let index = index">
+              <th scope="row">{{ index + 1 }}</th>
+              <td>{{ contact.name }}</td>
+              <td>{{ contact.email }}</td>
+              <td>{{ contact.message }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  

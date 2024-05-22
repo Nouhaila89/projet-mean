@@ -32,6 +32,7 @@ export class RegisterComponent {
         localStorage.setItem("user",JSON.stringify(res.user));
         this._toastr.success("Kullanıcı kaydı başarıyla tamamlandı");
         this._router.navigateByUrl("/");
+        window.location.reload();
       })
     }
   }

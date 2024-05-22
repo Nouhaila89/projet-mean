@@ -4,19 +4,25 @@
 <div class="container">
     <div class="row contact-wrapper">
         <div class="col-md-6">
+          <form #addForm="ngForm" autocomplete="off" (ngSubmit)="add(addForm)">
             <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Ad Soyad</label>
-                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="" style="border-radius: 0;">
-              </div>
-              <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Email adresi</label>
-                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="" style="border-radius: 0;">
-              </div>
-              <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label">Mesajınız</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" style="border-radius: 0;"></textarea>
-              </div>
-              <button class="btn btn-dark">Gönder</button>
+              <label for="name" class="form-label">Ad Soyad</label>
+              <input type="name" class="form-control" required id="name" name="name" #name ngModel placeholder="" style="border-radius: 0;" [appValid]="name.validity.valid">
+              <div class="invalid-feedback">Ad Soyad alanı zorunludur!</div>
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email adresi</label>
+              <input type="email" class="form-control" required id="email" name="email" #email ngModel placeholder="" style="border-radius: 0;" [appValid]="email.validity.valid">
+              <div class="invalid-feedback">Lütfen geçerli email adresi giriniz!</div>
+
+            </div>
+            <div class="mb-3">
+              <label for="message" class="form-label">Mesajınız</label>
+              <textarea class="form-control" id="message" required rows="3" name="message" #message ngModel style="border-radius: 0;" [appValid]="message.validity.valid"></textarea>
+              <div class="invalid-feedback">Mesaj alanı zorunludur!</div>
+            </div>
+            <button class="btn btn-dark">Gönder</button>
+          </form>
         </div>
         <div class="col-md-4 contact-adress">
             <div>

@@ -31,6 +31,10 @@ export const routes: Routes = [
                     loadComponent: ()=> import("./components/admin-coupon/admin-coupon/admin-coupon.component").then(c=> c.AdminCouponComponent),
                 },
                 {
+                    path:"admin-contact",
+                    loadComponent: ()=> import("./components/admin-contact/admin-contact.component").then(c=> c.AdminContactComponent),
+                },
+                {
                     path:"admin-orders",
                     loadComponent: ()=> import("./components/admin-orders/admin-orders.component").then(c=> c.AdminOrdersComponent),
                 }
