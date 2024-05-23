@@ -4,7 +4,7 @@
     <div style="margin: 20px 0px">
       <button
         class="btn btn-dark"
-        style="margin-left: 400px; width: 200px"
+        style="margin-left: 1400px; width: 200px"
         data-bs-toggle="modal"
         data-bs-target="#addModal"
       >
@@ -12,7 +12,7 @@
       </button>
     </div>
     <div>
-      <table class="table" style="margin: 0px; width: 600px">
+      <table class="table" style="margin: 0px; width: 1600px">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -135,7 +135,7 @@
           <label for="name">Kupon Adı</label>
           <input
             type="text"
-            [(ngModel)]="updateCoupon.name"
+            ngModel
             class="form-control"
             name="name"
             id="name"
@@ -148,7 +148,6 @@
           <label for="name">Kupon Oranı</label>
           <input
             type="text"
-            [(ngModel)]="updateCoupon.discountRate"
             class="form-control"
             name="discountRate"
             id="discountRate"

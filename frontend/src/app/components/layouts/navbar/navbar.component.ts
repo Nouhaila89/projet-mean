@@ -33,6 +33,7 @@ export class NavbarComponent implements OnInit{
 
   exit(){
     localStorage.removeItem("user");
+    localStorage.removeItem("token");
     this.result = true;
     this._router.navigateByUrl("login");
   }

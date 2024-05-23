@@ -1,5 +1,7 @@
 import { Routes } from '@angular/router';
 import { AdminGuard } from './common/guard/admin.guard';
+import { PaymentService } from './components/payment/service/payment.service';
+import { inject } from '@angular/core';
 
 export const routes: Routes = [  
     {
@@ -71,11 +73,13 @@ export const routes: Routes = [
             },
             {
                 path: "payment",
-                loadComponent: ()=> import("./components/payment/payment.component").then(c=> c.PaymentComponent)
+                loadComponent: ()=> import("./components/payment/payment.component").then(c=> c.PaymentComponent),
+                canActivate: [()=> inject(PaymentService).control()]
             },
             {
                 path: "orders",
-                loadComponent: ()=> import("./components/orders/orders.component").then(c=> c.OrdersComponent)
+                loadComponent: ()=> import("./components/orders/orders.component").then(c=> c.OrdersComponent),
+                canActivate: [()=> inject(PaymentService).control()]
             },
             {
                 path: "contact",

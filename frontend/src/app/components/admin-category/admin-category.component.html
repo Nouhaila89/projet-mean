@@ -2,7 +2,7 @@
   <div style="margin: 0px 20px">
     <div style="font-size: 30px">Kategori Listesi</div>
     <div style="margin: 20px 0px">
-      <div class="col-md-3" style="float: left; margin-left: -10px">
+      <div class="col-md-6" style="float: left; margin-left: -10px">
         <input
           type="search"
           [(ngModel)]="search"
@@ -12,7 +12,7 @@
       </div>
       <button
         class="btn btn-dark"
-        style="margin-left: 20px; width: 185px"
+        style="margin-left: 600px; width: 185px"
         data-bs-toggle="modal"
         data-bs-target="#addModal"
       >
@@ -20,7 +20,7 @@
       </button>
     </div>
     <div>
-      <table class="table" style="margin: 0px; width: 600px">
+      <table class="table" style="margin: 0px; width: 1600px">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -135,7 +135,7 @@
           <label for="name">Kategori Adı</label>
           <input
             type="text"
-            [(ngModel)]="updateCategory.name"
+            ngModel
             class="form-control"
             name="name"
             id="name"
