@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const response = require("../services/response.service");
 const Basket = require("../models/basket");
-const {v4: uuidv4} = require("uuid");
+const { v4: uuidv4 } = require("uuid");
 const Product = require("../models/product");
 
 router.post("/add", async (req, res) => {
@@ -12,33 +12,33 @@ router.post("/add", async (req, res) => {
         let product = await Product.findById(productId);
 
         if (!product) {
-            return res.status(404).json({ message: "Ürün bulunamadı." });
+            return res.status(404).json({ message: "Produit non trouvé." });
         }
 
-        // Stok kontrolü
+        // Contrôle de stock
         switch (selectedSize) {
             case 'S':
                 if (product.stockS === 0 || product.stockS < quantity) {
-                    return res.status(400).json({ message: "Üzgünüz, bu bedende yeterli stok bulunmamaktadır." });
+                    return res.status(400).json({ message: "Désolé, stock insuffisant pour cette taille." });
                 }
                 break;
             case 'M':
                 if (product.stockM === 0 || product.stockM < quantity) {
-                    return res.status(400).json({ message: "Üzgünüz, bu bedende yeterli stok bulunmamaktadır." });
+                    return res.status(400).json({ message: "Désolé, stock insuffisant pour cette taille." });
                 }
                 break;
             case 'X':
                 if (product.stockX === 0 || product.stockX < quantity) {
-                    return res.status(400).json({ message: "Üzgünüz, bu bedende yeterli stok bulunmamaktadır." });
+                    return res.status(400).json({ message: "Désolé, stock insuffisant pour cette taille." });
                 }
                 break;
             case 'XL':
                 if (product.stockXl === 0 || product.stockXl < quantity) {
-                    return res.status(400).json({ message: "Üzgünüz, bu bedende yeterli stok bulunmamaktadır." });
+                    return res.status(400).json({ message: "Désolé, stock insuffisant pour cette taille." });
                 }
                 break;
             default:
-                return res.status(400).json({ message: "Geçersiz beden seçimi." });
+                return res.status(400).json({ message: "Sélection de taille invalide." });
         }
 
         let existingBasket = await Basket.findOne({ userId: userId, productId: productId, selectedSize: selectedSize });
@@ -57,7 +57,7 @@ router.post("/add", async (req, res) => {
             await basket.save();
         }
 
-        // Stok güncelleme
+        // Mise à jour du stock
         switch (selectedSize) {
             case 'S':
                 product.stockS -= quantity;
@@ -75,7 +75,7 @@ router.post("/add", async (req, res) => {
 
         await product.save();
 
-        res.json({ message: "Ürün başarıyla sepete eklendi!" });
+        res.json({ message: "Produit ajouté au panier avec succès !" });
     });
 });
 
@@ -86,60 +86,59 @@ router.post("/updateQuantity", async (req, res) => {
         let basket = await Basket.findById(_id);
 
         if (!basket) {
-            return res.status(404).json({ message: "Sepet bulunamadı." });
+            return res.status(404).json({ message: "Panier non trouvé." });
         }
 
         let product = await Product.findById(basket.productId);
 
         if (!product) {
-            return res.status(404).json({ message: "Ürün bulunamadı." });
+            return res.status(404).json({ message: "Produit non trouvé." });
         }
 
-        // Yeni adet değeri ile stok kontrolü
+        // Contrôle de stock avec la nouvelle quantité
         let newStock = 0;
         switch (basket.selectedSize) {
             case 'S':
                 newStock = product.stockS + basket.quantity - quantity;
                 if (newStock < 0) {
-                    return res.status(400).json({ message: "Üzgünüz, bu bedende yeterli stok bulunmamaktadır." });
+                    return res.status(400).json({ message: "Désolé, stock insuffisant pour cette taille." });
                 }
                 product.stockS = newStock;
                 break;
             case 'M':
                 newStock = product.stockM + basket.quantity - quantity;
                 if (newStock < 0) {
-                    return res.status(400).json({ message: "Üzgünüz, bu bedende yeterli stok bulunmamaktadır." });
+                    return res.status(400).json({ message: "Désolé, stock insuffisant pour cette taille." });
                 }
                 product.stockM = newStock;
                 break;
             case 'X':
                 newStock = product.stockX + basket.quantity - quantity;
                 if (newStock < 0) {
-                    return res.status(400).json({ message: "Üzgünüz, bu bedende yeterli stok bulunmamaktadır." });
+                    return res.status(400).json({ message: "Désolé, stock insuffisant pour cette taille." });
                 }
                 product.stockX = newStock;
                 break;
             case 'XL':
                 newStock = product.stockXl + basket.quantity - quantity;
                 if (newStock < 0) {
-                    return res.status(400).json({ message: "Üzgünüz, bu bedende yeterli stok bulunmamaktadır." });
+                    return res.status(400).json({ message: "Désolé, stock insuffisant pour cette taille." });
                 }
                 product.stockXl = newStock;
                 break;
             default:
-                return res.status(400).json({ message: "Geçersiz beden seçimi." });
+                return res.status(400).json({ message: "Sélection de taille invalide." });
         }
 
         await product.save();
 
-        // Sepetin adetini güncelle
+        // Mise à jour de la quantité du panier
         basket.quantity = quantity;
         await basket.save();
 
-        res.json({ message: "Adet başarıyla güncellendi." });
+        res.json({ message: "Quantité mise à jour avec succès." });
     });
 });
-
 
 router.post("/removeById", async (req, res) => {
     response(res, async () => {
@@ -148,16 +147,16 @@ router.post("/removeById", async (req, res) => {
         let basket = await Basket.findById(_id);
 
         if (!basket) {
-            return res.status(404).json({ message: "Sepet bulunamadı." });
+            return res.status(404).json({ message: "Panier non trouvé." });
         }
 
         let product = await Product.findById(basket.productId);
 
         if (!product) {
-            return res.status(404).json({ message: "Ürün bulunamadı." });
+            return res.status(404).json({ message: "Produit non trouvé." });
         }
 
-        // İlgili bedene göre stok miktarını artır
+        // Mise à jour du stock en fonction de la taille sélectionnée
         switch (basket.selectedSize) {
             case 'S':
                 product.stockS += basket.quantity;
@@ -178,20 +177,17 @@ router.post("/removeById", async (req, res) => {
         await Product.findByIdAndUpdate(basket.productId, product);
         await Basket.findByIdAndDelete(_id);
 
-        res.json({ message: "Ürünü sepetten başarıyla kaldırdık!" });
+        res.json({ message: "Produit retiré du panier avec succès !" });
     });
 });
 
-
-
-
-router.post("/", async(req, res)=> {
-    response(res, async()=>{
-        const {userId} = req.body;
+router.post("/", async (req, res) => {
+    response(res, async () => {
+        const { userId } = req.body;
 
         const baskets = await Basket.aggregate([
             {
-                $match: {userId: userId}
+                $match: { userId: userId }
             },
             {
                 $lookup: {
@@ -207,11 +203,11 @@ router.post("/", async(req, res)=> {
     });
 });
 
-router.post("/getCount",async(req, res)=> {
-    response(res, async()=> {
-        const {userId} = req.body;
-        const count = await Basket.find({userId: userId}).count();
-        res.json({count: count});
+router.post("/getCount", async (req, res) => {
+    response(res, async () => {
+        const { userId } = req.body;
+        const count = await Basket.find({ userId: userId }).count();
+        res.json({ count: count });
     });
 });
 

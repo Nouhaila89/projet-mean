@@ -1,46 +1,46 @@
 <div class="container1" style="margin-top: 130px;">
-    <div class="row baskets-wrapper">
-        <div class="col-md-8">
-            <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">Ürün Resimi</th>
-                    <th scope="col">Ürün Adı</th>
-                    <th scope="col">Adet</th>
-                    <th scope="col">Beden</th>
-                    <th scope="col">Fiyatı</th>
-                    <th scope="col">Toplam Tutar</th>
-                    <th scope="col">İşlemler</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let basket of baskets let index = index">
-                    <td><img [src]="'http://localhost:5000/' + basket.products[0].imageUrls[0].path" alt=""></td>
-                    <td class="td-center">{{basket.products[0].name}}</td>
-                    <td class="td-center">
-                      <i class="bi bi-dash-square" style="margin-right: 10px;" (click)="changeQuantity(index, 'decrease')"></i>
-                      {{ basket.quantity }}
-                      <i class="bi bi-plus-square" style="margin-left: 10px;" (click)="changeQuantity(index, 'increase')"></i>
-                  </td>
-                    <td class="td-center">{{basket.selectedSize}}</td>
-                    <td class="td-center">{{basket.price}}</td>
-                    <td class="td-center">{{basket.price * basket.quantity}}</td>
-                    <td (click)="removeById(basket._id)" class="td-center"><i class="bi bi-x-lg"></i></td>
-                  </tr>
-                </tbody>
-              </table>
-        </div>
-        <div class="col-md-3 cart-total">
-            <div class="cart-total-wrapper">
-            <h5>SİPARİŞ ÖZETİ</h5>
-            <h6>Toplam Tutar(KDV Dahil): {{sum}} TL</h6>
-            <h6>Kargo Ücreti: 0.00 TL</h6>
-            <h5>Ödenecek Tutar: {{sum}} TL</h5>
-            <div style="display: flex;">
-              <input type="text" class="kupon" placeholder="Kupon Girin" [(ngModel)]="couponName">
-              <button class="btn btn-dark" (click)="applyCoupon(couponName)">Uygula</button>
-            </div>            
-            <button (click)="kontrol()" class="btn btn-dark satinAlButton">Satın Al</button>
-            </div>
-        </div>
+  <div class="row baskets-wrapper">
+      <div class="col-md-8">
+          <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Image du Produit</th>
+                  <th scope="col">Nom du Produit</th>
+                  <th scope="col">Quantité</th>
+                  <th scope="col">Taille</th>
+                  <th scope="col">Prix</th>
+                  <th scope="col">Total</th>
+                  <th scope="col">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let basket of baskets let index = index">
+                  <td><img [src]="'http://localhost:5000/' + basket.products[0].imageUrls[0].path" alt=""></td>
+                  <td class="td-center">{{basket.products[0].name}}</td>
+                  <td class="td-center">
+                    <i class="bi bi-dash-square" style="margin-right: 10px;" (click)="changeQuantity(index, 'decrease')"></i>
+                    {{ basket.quantity }}
+                    <i class="bi bi-plus-square" style="margin-left: 10px;" (click)="changeQuantity(index, 'increase')"></i>
+                </td>
+                  <td class="td-center">{{basket.selectedSize}}</td>
+                  <td class="td-center">{{basket.price}}</td>
+                  <td class="td-center">{{basket.price * basket.quantity}}</td>
+                  <td (click)="removeById(basket._id)" class="td-center"><i class="bi bi-x-lg"></i></td>
+                </tr>
+              </tbody>
+            </table>
+      </div>
+      <div class="col-md-3 cart-total">
+          <div class="cart-total-wrapper">
+          <h5>RÉSUMÉ DE LA COMMANDE</h5>
+          <h6>Total (TTC): {{sum}} TL</h6>
+          <h6>Frais de Livraison: 0.00 TL</h6>
+          <h5>Montant à Payer: {{sum}} TL</h5>
+          <div style="display: flex;">
+            <input type="text" class="kupon" placeholder="Entrez le Code Promo" [(ngModel)]="couponName">
+            <button class="btn btn-dark" (click)="applyCoupon(couponName)">Appliquer</button>
+          </div>            
+          <button (click)="kontrol()" class="btn btn-dark satinAlButton">Acheter</button>
+          </div>
+      </div>
 </div>

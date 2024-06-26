@@ -1,16 +1,16 @@
 const express = require("express");
 const router = express.Router();
-const {v4: uuidv4} = require("uuid");
+const { v4: uuidv4 } = require("uuid");
 const Order = require("../models/order");
 const Basket = require("../models/basket");
 const response = require("../services/response.service");
 
-router.post("/create",async(req, res)=> {
-    response(res, async()=>{
-        const {userId, name, address} = req.body;
-        let baskets = await Basket.find({userId: userId});
+router.post("/create", async (req, res) => {
+    response(res, async () => {
+        const { userId, name, address } = req.body;
+        let baskets = await Basket.find({ userId: userId });
 
-        for(const basket of baskets){
+        for (const basket of baskets) {
             let order = new Order();
             order._id = uuidv4();
             order.productId = basket.productId;
@@ -23,20 +23,19 @@ router.post("/create",async(req, res)=> {
             order.createdDate = new Date();
 
             await order.save();
-
             await Basket.findOneAndDelete(basket._id);
         }
 
-        res.json({message:"Siparişiniz başarıyla oluşturuldu!"});
+        res.json({ message: "Votre commande a été créée avec succès!" });
     });
 });
 
-router.post("/", async(req,res)=> {
-    response(res, async()=> {
-        const {userId} = req.body;
+router.post("/", async (req, res) => {
+    response(res, async () => {
+        const { userId } = req.body;
         let orders = await Order.aggregate([
             {
-                $match: {userId: userId}
+                $match: { userId: userId }
             },
             {
                 $lookup: {
@@ -47,7 +46,7 @@ router.post("/", async(req,res)=> {
                 }
             }
         ])
-        .sort({createdDate: -1});
+        .sort({ createdDate: -1 });
 
         res.json(orders);
     });
@@ -69,6 +68,5 @@ router.get("/all", async (req, res) => {
         res.json(allOrders);
     });
 });
-
 
 module.exports = router;

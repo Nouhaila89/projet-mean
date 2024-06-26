@@ -1,83 +1,60 @@
 <div class="content-wrapper" style="margin-bottom: 30px;">
-<div style="margin: 0px 20px;">
+  <div style="margin: 0px 20px;">
     <div style="font-size: 30px;">
-       Ürün Listesi 
+       Liste de Produits
     </div>
-      <div class="form-group" style="margin: 20px 0px;">
-        <div class="col-md-6" style="float: left; margin-left: -10px;">
-          <input class="form-control" type="search" [(ngModel)]="request.search" placeholder="Aranacak değeri yazınız..." (keyup)="search()" (search)="getAll(1)">
+    <div class="form-group" style="margin: 20px 0px;">
+      <div class="col-md-6" style="float: left; margin-left: -10px;">
+        <input class="form-control" type="search" [(ngModel)]="request.search" placeholder="Entrez la valeur à rechercher..." (keyup)="search()" (search)="getAll(1)">
       </div>
-        <button routerLink="../admin-products/add" class="btn btn-dark" style="margin-left: 525px; width: 290px;">Ürün Ekle</button>
-        
+      <button routerLink="../admin-products/add" class="btn btn-dark" style="margin-left: 525px; width: 290px;">Ajouter un Produit</button>
     </div>
-   
     <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Ürün Resmi</th>
-            <th scope="col">Ürün Adı</th>
-            <!-- <th scope="col">Kataegoriler</th> -->
-            <!-- <th scope="col">Stok Bilgisi</th>
-            <th scope="col">Stok Bilgisi</th>
-            <th scope="col">Stok Bilgisi</th>
-            <th scope="col">Stok Bilgisi</th> -->
-            <!-- <th scope="col">Birim Fiyatı</th>
-            <th scope="col">Açıklama</th> -->
-            <th scope="col">Oluşturulma Tarihi</th>
-            <th scope="col">Aktif/Pasif</th>
-            <th scope="col">İşlemler</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let product of result.datas let index = index">
-            <th scope="row">{{index + 1}}</th>
-            <td>
-              <img [src]="'http://localhost:5000/' + product.imageUrls[0].path" width="90" height="120"/>
-            </td>
-            <td>{{product.name}}</td>
-            <!-- <td>
-              <ul>
-                <li *ngFor="let category of product.categories">
-                  {{category.name}}
-                </li>
-              </ul>
-            </td> -->
-            <!-- <td>{{product.stockS}}</td>
-            <td>{{product.stockM}}</td>
-            <td>{{product.stockX}}</td>
-            <td>{{product.stockXl}}</td> -->
-            <!-- <td>{{product.price}}</td>
-            <td>{{product.description}}</td> -->
-            <td>{{product.createdDate | date: 'dd.MM.yyyy HH:mm:sss'}}</td>
-            <td>
-              <div class="form-check">
-                <input class="form-check-input" (click)="changeProductStatus(product._id)" type="checkbox" [(ngModel)]="product.isActive" id="flexCheckChecked">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Image du Produit</th>
+          <th scope="col">Nom du Produit</th>
+          <th scope="col">Date de Création</th>
+          <th scope="col">Actif/Inactif</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of result.datas let index = index">
+          <th scope="row">{{index + 1}}</th>
+          <td>
+            <img [src]="'http://localhost:5000/' + product.imageUrls[0].path" width="90" height="120"/>
+          </td>
+          <td>{{product.name}}</td>
+          <td>{{product.createdDate | date: 'dd.MM.yyyy HH:mm:sss'}}</td>
+          <td>
+            <div class="form-check">
+              <input class="form-check-input" (click)="changeProductStatus(product._id)" type="checkbox" [(ngModel)]="product.isActive" id="flexCheckChecked">
             </div>
-            </td>
-            <td><button routerLink="../admin-products/update/{{product._id}}" class="btn btn-dark" style="margin: 0px 5px;">Güncelle</button><button (click)="removeById(product._id)" class="btn btn-danger">Sil</button></td>
-          </tr>
-        </tbody>
-      </table>
-
-      <select name="pageSize" id="pageSize" class="form-control text-center" [(ngModel)]="request.pageSize"  (change)="pageSizeChanged()"  style="width: 65px; float:left;">
-        <option>5</option>   
-        <option>10</option>   
-        <option>20</option>   
-        <option>50</option>   
-        <option>100</option>   
-        <option>200</option>   
-        <option>500</option>   
-        <option>1000</option>   
+          </td>
+          <td><button routerLink="../admin-products/update/{{product._id}}" class="btn btn-dark" style="margin: 0px 5px;">Mettre à Jour</button><button (click)="removeById(product._id)" class="btn btn-danger">Supprimer</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <select name="pageSize" id="pageSize" class="form-control text-center" [(ngModel)]="request.pageSize" (change)="pageSizeChanged()" style="width: 65px; float:left;">
+      <option>5</option>
+      <option>10</option>
+      <option>20</option>
+      <option>50</option>
+      <option>100</option>
+      <option>200</option>
+      <option>500</option>
+      <option>1000</option>
     </select>
     <nav style="float: right">
-        <ul class="pagination">
-            <li class="page-item" [ngClass]="result.isFirstPage ? 'disabled' : ''"><a class="page-link" (click)="getAll(1)">İlk</a></li>
-            <li class="page-item" [ngClass]="result.isFirstPage ? 'disabled' : ''"><a class="page-link" (click)="getAll(request.pageNumber - 1)">Önceki</a></li>
-            <li class="page-item" *ngFor="let p of pageNumbers"><a class="page-link" [ngClass]="result.pageNumber == p? 'active':''" (click)="getAll(p)">{{p}}</a></li>
-            <li class="page-item" [ngClass]="result.isLastPage ? 'disabled' : ''"><a class="page-link" (click)="getAll(request.pageNumber + 1)">Sonraki</a></li>
-            <li class="page-item" [ngClass]="result.isLastPage ? 'disabled' : ''"><a class="page-link" (click)="getAll(result.totalPageCount)">Son</a></li>
-        </ul>
+      <ul class="pagination">
+        <li class="page-item" [ngClass]="result.isFirstPage ? 'disabled' : ''"><a class="page-link" (click)="getAll(1)">Première</a></li>
+        <li class="page-item" [ngClass]="result.isFirstPage ? 'disabled' : ''"><a class="page-link" (click)="getAll(request.pageNumber - 1)">Précédente</a></li>
+        <li class="page-item" *ngFor="let p of pageNumbers"><a class="page-link" [ngClass]="result.pageNumber == p? 'active':''" (click)="getAll(p)">{{p}}</a></li>
+        <li class="page-item" [ngClass]="result.isLastPage ? 'disabled' : ''"><a class="page-link" (click)="getAll(request.pageNumber + 1)">Suivante</a></li>
+        <li class="page-item" [ngClass]="result.isLastPage ? 'disabled' : ''"><a class="page-link" (click)="getAll(result.totalPageCount)">Dernière</a></li>
+      </ul>
     </nav>
-</div>
+  </div>
 </div>

@@ -1,6 +1,6 @@
 <div class="content-wrapper">
   <div style="margin: 0px 20px">
-    <div style="font-size: 30px">Kupon Listesi</div>
+    <div style="font-size: 30px">Liste de Coupons</div>
     <div style="margin: 20px 0px">
       <button
         class="btn btn-dark"
@@ -8,7 +8,7 @@
         data-bs-toggle="modal"
         data-bs-target="#addModal"
       >
-        Kupon Ekle
+        Ajouter un Coupon
       </button>
     </div>
     <div>
@@ -16,9 +16,9 @@
         <thead>
           <tr>
             <th scope="col">#</th>
-            <th scope="col">Kupon Adı</th>
-            <th scope="col">Kupon Oranı</th>
-            <th scope="col" style="width: 200px">İşlemler</th>
+            <th scope="col">Nom du Coupon</th>
+            <th scope="col">Taux de Réduction</th>
+            <th scope="col" style="width: 200px">Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -34,9 +34,9 @@
                 data-bs-toggle="modal"
                 data-bs-target="#updateModal"
               >
-                Güncelle</button
+                Modifier</button
               ><button (click)="removeById(coupon)" class="btn btn-danger">
-                Sil
+                Supprimer
               </button>
             </td>
           </tr>
@@ -56,7 +56,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="updateModalLabel">Kupon Güncelle</h1>
+        <h1 class="modal-title fs-5" id="updateModalLabel">Modifier le Coupon</h1>
         <button
           type="button"
           id="updateModalCLoseBtn"
@@ -71,7 +71,7 @@
         (ngSubmit)="update(updateForm)"
       >
         <div class="modal-body">
-          <label for="UpdateName">Kupon Adı</label>
+          <label for="UpdateName">Nom du Coupon</label>
           <input
             type="text"
             [(ngModel)]="updateCoupon.name"
@@ -84,7 +84,7 @@
           />
         </div>
         <div class="modal-body">
-          <label for="UpdateName">Kupon Oranı</label>
+          <label for="UpdateName">Taux de Réduction</label>
           <input
             type="text"
             [(ngModel)]="updateCoupon.discountRate"
@@ -102,9 +102,9 @@
             class="btn btn-secondary"
             data-bs-dismiss="modal"
           >
-            Kapat
+            Fermer
           </button>
-          <button type="submit" class="btn btn-dark">Güncelle</button>
+          <button type="submit" class="btn btn-dark">Modifier</button>
         </div>
       </form>
     </div>
@@ -121,7 +121,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="addModalLabel">Kupon Ekle</h1>
+        <h1 class="modal-title fs-5" id="addModalLabel">Ajouter un Coupon</h1>
         <button
           type="button"
           id="addModalCLoseBtn"
@@ -132,7 +132,7 @@
       </div>
       <form autocomplete="off" #addForm="ngForm" (ngSubmit)="add(addForm)">
         <div class="modal-body">
-          <label for="name">Kupon Adı</label>
+          <label for="name">Nom du Coupon</label>
           <input
             type="text"
             ngModel
@@ -145,7 +145,7 @@
           />
         </div>
         <div class="modal-body">
-          <label for="name">Kupon Oranı</label>
+          <label for="name">Taux de Réduction</label>
           <input
             type="text"
             class="form-control"
@@ -162,9 +162,9 @@
             class="btn btn-secondary"
             data-bs-dismiss="modal"
           >
-            Kapat
+            Fermer
           </button>
-          <button type="submit" class="btn btn-dark">Kaydet</button>
+          <button type="submit" class="btn btn-dark">Enregistrer</button>
         </div>
       </form>
     </div>

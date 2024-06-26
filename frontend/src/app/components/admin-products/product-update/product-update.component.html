@@ -1,6 +1,6 @@
 <div class="content-wrapper row-center">
   <div class="ml-4 mb-3">
-    <h3 style="font-size: 30px">Ürün Güncelleme Sayfası</h3>
+    <h3 style="font-size: 30px">Page de Modification de Produit</h3>
   </div>
   <div class="col-md-6 ml-3">
     <form
@@ -9,7 +9,7 @@
       (ngSubmit)="update(updateForm)"
     >
       <div class="form-group">
-        <label for="name">Ürün Adı</label>
+        <label for="name">Nom du Produit</label>
         <input
           type="text"
           name="name"
@@ -21,10 +21,10 @@
           class="form-control"
           [appValid]="name.validity.valid"
         />
-        <div class="invalid-feedback">Ürün adı en az 3 karakter olmalıdır!</div>
+        <div class="invalid-feedback">Le nom du produit doit avoir au moins 3 caractères!</div>
       </div>
       <div class="form-group mt-2">
-        <label for="categoriesSelect">Kategoriler</label>
+        <label for="categoriesSelect">Catégories</label>
         <select
           class="form-control"
           name="categoriesSelect"
@@ -40,7 +40,7 @@
       </div>
       <div class="d-flex">
         <div class="form-group mt-2 mr-2">
-          <label for="stockS">S Beden Stok</label>
+          <label for="stockS">Stock Taille S</label>
           <input
             type="number"
             name="stockS"
@@ -52,10 +52,10 @@
             class="form-control"
             [appValid]="stockS.validity.valid"
           />
-          <div class="invalid-feedback">Ürün stok adedi en az 1 olmalıdır!</div>
+          <div class="invalid-feedback">Le stock du produit doit être au moins de 1!</div>
         </div>
         <div class="form-group mt-2 mr-2">
-          <label for="stockM">M Beden Stok</label>
+          <label for="stockM">Stock Taille M</label>
           <input
             type="number"
             name="stockM"
@@ -67,10 +67,10 @@
             class="form-control"
             [appValid]="stockM.validity.valid"
           />
-          <div class="invalid-feedback">Ürün stok adedi en az 1 olmalıdır!</div>
+          <div class="invalid-feedback">Le stock du produit doit être au moins de 1!</div>
         </div>
         <div class="form-group mt-2 mr-2">
-          <label for="stockX">X Beden Stok</label>
+          <label for="stockX">Stock Taille X</label>
           <input
             type="number"
             name="stockX"
@@ -82,9 +82,10 @@
             class="form-control"
             [appValid]="stockX.validity.valid"
           />
-          <div class="invalid-feedback">Ürün stok adedi en az 1 olmalıdır!</div>
-        </div> <div class="form-group mt-2">
-          <label for="stockXl">XL Beden Stok</label>
+          <div class="invalid-feedback">Le stock du produit doit être au moins de 1!</div>
+        </div>
+        <div class="form-group mt-2">
+          <label for="stockXl">Stock Taille XL</label>
           <input
             type="number"
             name="stockXl"
@@ -96,11 +97,11 @@
             class="form-control"
             [appValid]="stockXl.validity.valid"
           />
-          <div class="invalid-feedback">Ürün stok adedi en az 1 olmalıdır!</div>
+          <div class="invalid-feedback">Le stock du produit doit être au moins de 1!</div>
         </div>
       </div>
       <div class="form-group mt-2">
-        <label for="price">Birim Fiyatı</label>
+        <label for="price">Prix Unité</label>
         <input
           type="price"
           name="price"
@@ -112,25 +113,26 @@
           class="form-control"
           [appValid]="price.validity.valid"
         />
-        <div class="invalid-feedback">Ürün birim fiyatı en az 1 olmalıdır!</div>
+        <div class="invalid-feedback">Le prix unitaire du produit doit être au moins de 1!</div>
       </div>
       <div class="form-group mt-2">
-        <label for="description">Açıklama</label>
-        <textarea type="text"
-        name="description"
-        id="description"
-        [(ngModel)]="product.description"
-        required
-        #description
-        min="1"
-        rows="5"
-        class="form-control"
-        [appValid]="description.validity.valid">
-        </textarea>
-        <div class="invalid-feedback">Ürün birim fiyatı en az 1 olmalıdır!</div>
+        <label for="description">Description</label>
+        <textarea
+          type="text"
+          name="description"
+          id="description"
+          [(ngModel)]="product.description"
+          required
+          #description
+          min="1"
+          rows="5"
+          class="form-control"
+          [appValid]="description.validity.valid"
+        ></textarea>
+        <div class="invalid-feedback">Veuillez saisir une description!</div>
       </div>
       <div class="form-group mt-2">
-        <label for="images">Ürün Resimleri</label>
+        <label for="images">Images du Produit</label>
         <input
           type="file"
           name="images"
@@ -158,7 +160,7 @@
         </span>
       </div>
       <div class="form-group mt-2">
-        <button class="btn btn-dark w-100">Güncelle</button>
+        <button class="btn btn-dark w-100">Mettre à Jour</button>
       </div>
     </form>
   </div>

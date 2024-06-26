@@ -15,7 +15,7 @@ export class SwalService {
       showConfirmButton: true,
       confirmButtonText: btnName,
       showCancelButton: true,
-      cancelButtonText: "Vasgeç",
+      cancelButtonText: "Annuler",
       icon: "question"
     }).then(res=>{
       if(res.isConfirmed){

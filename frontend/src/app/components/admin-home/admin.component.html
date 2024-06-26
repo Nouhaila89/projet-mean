@@ -1,25 +1,64 @@
 <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Can's Store</h1>
+  <!-- En-tête du contenu (En-tête de la page) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Store</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Accueil</a></li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
+
+  <!-- Contenu principal -->
+  <section class="content">
+    <!-- Statistiques de Vente -->
+    <div class="row">
+      <div class="col-md-6">
+        <!-- Graphique des Ventes Mensuelles -->
+        <div class="card">
+          <div class="card-header">
+            Ventes Mensuelles
           </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Ana Sayfa</a></li>
-            </ol>
+          <div class="card-body">
+            <!-- Intégrez ici votre graphique des ventes mensuelles -->
+            <canvas id="monthlySalesChart" width="400" height="200"></canvas>
           </div>
         </div>
-      </div><!-- /.container-fluid -->
-    </section>
-
-    <!-- Main content -->
-    <section class="content">
-      <div style="display: flex; justify-content: center; align-items: center; height: 80vh; font-size: 80px;">
-        CAN'S STORE ADMİN PANELİ
       </div>
-    </section>
-    <!-- /.content -->
- </div>
+      <div class="col-md-6">
+        <!-- Tableau des Produits les plus Vendus -->
+        <div class="card">
+          <div class="card-header">
+            Produits les plus Vendus
+          </div>
+          <div class="card-body">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Nom du Produit</th>
+                  <th>Quantité Vendue</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>Produit A</td>
+                  <td>100</td>
+                </tr>
+                <!-- Ajoutez d'autres lignes pour les produits -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /.content -->
+</div>

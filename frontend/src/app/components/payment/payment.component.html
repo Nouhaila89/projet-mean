@@ -1,57 +1,57 @@
-<div class="d-flex justify-content-center" style="margin-top: 50px; margin-bottom: 50px; margin-top: 150px;">
+<div class="d-flex justify-content-center" style="margin-top: 50px; margin-bottom: 50px;">
   <div class="address-wrapper">
     <div>
-      <h4>ADRES BİLGİLER</h4>
+      <h4>INFORMATIONS D'ADRESSE</h4>
       <div class="address-item">
-        <label for="">AD - SOYAD</label>
+        <label for="">NOM - PRÉNOM</label>
         <input type="text" name="name" [(ngModel)]="name">
       </div>
       <div class="address-item">
-        <label for="">ADRES</label>
+        <label for="">ADRESSE</label>
         <input type="text" [(ngModel)]="address">
       </div>
     </div>
   </div>
-    <div style="width: 400px">
-      <div class="card"  style="border-radius: 0; border: 1px solid #ccc;">
-        <div class="mt-4">
-          <h2 class="text-center">Ödeme İşlemi</h2>
-        </div>
-        <div class="card-body">
-          <form autocomplete="off">
-            <div class="form-group">
-              <label for="cartName">Kart Sahibinin Adı</label>
-              <input
-                class="form-control mt-2"
-                style="border-color: #212529"
-                type="text"
-                name="cartName"
-                id="cartName"
-                required
-                [(ngModel)]="paymentModel.cartName"
-                style="border-radius: 0;"
-                placeholder="Kart Sahibinin Adı"
-              />
-              <div class="invalid-feedback">Kart Sahibinin Adı alanı boş olamaz!</div>
-            </div>
-            <div class="form-group mt-3">
-              <label for="cartNumber">Kart Numarası</label>
-              <input
-                class="form-control mt-2"
-                style="border-color: #212529"
-                type="text"
-                name="cartNumber"
-                id="cartNumber"
-                required
-                [(ngModel)]="paymentModel.cartNumber"
-                style="border-radius: 0;"
-                placeholder="1234 1234 1234 1234"
-              />
-              <div class="invalid-feedback">Geçerli bir kart numarası girin!</div>
-            </div>
-            <div class="d-flex">
-              <div>
-                <label for="expireMonth">Son Kullanma Ayı</label>
+  <div style="width: 400px">
+    <div class="card" style="border-radius: 0; border: 1px solid #ccc;">
+      <div class="mt-4">
+        <h2 class="text-center">Processus de Paiement</h2>
+      </div>
+      <div class="card-body">
+        <form autocomplete="off">
+          <div class="form-group">
+            <label for="cartName">Nom du Titulaire de la Carte</label>
+            <input
+              class="form-control mt-2"
+              style="border-color: #212529"
+              type="text"
+              name="cartName"
+              id="cartName"
+              required
+              [(ngModel)]="paymentModel.cartName"
+              style="border-radius: 0;"
+              placeholder="Nom du Titulaire de la Carte"
+            />
+            <div class="invalid-feedback">Le champ Nom du Titulaire de la Carte ne peut pas être vide !</div>
+          </div>
+          <div class="form-group mt-3">
+            <label for="cartNumber">Numéro de Carte</label>
+            <input
+              class="form-control mt-2"
+              style="border-color: #212529"
+              type="text"
+              name="cartNumber"
+              id="cartNumber"
+              required
+              [(ngModel)]="paymentModel.cartNumber"
+              style="border-radius: 0;"
+              placeholder="1234 1234 1234 1234"
+            />
+            <div class="invalid-feedback">Veuillez saisir un numéro de carte valide !</div>
+          </div>
+          <div class="d-flex">
+            <div>
+              <label for="expireMonth">Mois d'Expiration</label>
               <input
                 class="form-control mr-2"
                 style="border-color: #212529; width: 50%"
@@ -61,11 +61,11 @@
                 required
                 [(ngModel)]="paymentModel.expireMonth"
                 style="border-radius: 0;"
-                placeholder="AA"
+                placeholder="MM"
               />
-              </div>
-              <div>
-                <label for="">Son Kullanma Yılı</label>
+            </div>
+            <div>
+              <label for="">Année d'Expiration</label>
               <input
                 class="form-control ml-2"
                 style="border-color: #212529; width: 50%"
@@ -75,46 +75,46 @@
                 required
                 [(ngModel)]="paymentModel.expireYear"
                 style="border-radius: 0;"
-                placeholder="YYYY"
+                placeholder="AAAA"
               />
-              </div>
             </div>
-            <div class="form-group mt-3">
-              <label for="cvc">CVC</label>
-              <input
-                class="form-control mt-2"
-                style="border-color: #212529"
-                type="password"
-                name="cvc"
-                id="cvc"
-                required
-                [(ngModel)]="paymentModel.cvc"
-                style="border-radius: 0;"
-                placeholder="CVC"
-              />
-              <div class="invalid-feedback">CVC alanı boş olamaz!</div>
-            </div>
-            <div class="form-group mt-3">
-                <label for="price">Ödenecek Tutar</label>
-                <input
-                  class="form-control mt-2"
-                  style="border-color: #212529"
-                  type="number"
-                  name="price"
-                  id="price"
-                  required
-                  [(ngModel)]="paymentModel.price"
-                  style="border-radius: 0;"
-                  placeholder="Ödenecek Tutar"
-                  disabled
-                />
-                <div class="invalid-feedback">Geçerli bir tutar girin!</div>
-              </div>
-            <div class="form-group mt-2">
-              <button (click)="makePayment()" class="btn btn-dark w-100 mt-3" type="submit" style="border-radius: 0;">Öde</button>
-            </div>
-          </form>
-        </div>
+          </div>
+          <div class="form-group mt-3">
+            <label for="cvc">CVC</label>
+            <input
+              class="form-control mt-2"
+              style="border-color: #212529"
+              type="password"
+              name="cvc"
+              id="cvc"
+              required
+              [(ngModel)]="paymentModel.cvc"
+              style="border-radius: 0;"
+              placeholder="CVC"
+            />
+            <div class="invalid-feedback">Le champ CVC ne peut pas être vide !</div>
+          </div>
+          <div class="form-group mt-3">
+            <label for="price">Montant à Payer</label>
+            <input
+              class="form-control mt-2"
+              style="border-color: #212529"
+              type="number"
+              name="price"
+              id="price"
+              required
+              [(ngModel)]="paymentModel.price"
+              style="border-radius: 0;"
+              placeholder="Montant à Payer"
+              disabled
+            />
+            <div class="invalid-feedback">Veuillez saisir un montant valide !</div>
+          </div>
+          <div class="form-group mt-2">
+            <button (click)="makePayment()" class="btn btn-dark w-100 mt-3" type="submit" style="border-radius: 0;">Payer</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
+</div>

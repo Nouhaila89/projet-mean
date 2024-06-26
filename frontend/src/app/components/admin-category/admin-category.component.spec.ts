@@ -1,23 +1,30 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { CategoryModel } from '../models/category.model';
 
-import { AdminCategoryComponent } from './admin-category.component';
 
-describe('AdminCategoryComponent', () => {
-  let component: AdminCategoryComponent;
-  let fixture: ComponentFixture<AdminCategoryComponent>;
+@Injectable({
+  providedIn: 'root'
+})
+export class CategoryService {
+  private baseUrl = 'http://localhost:5000/api/categories';
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [AdminCategoryComponent]
-    })
-    .compileComponents();
-    
-    fixture = TestBed.createComponent(AdminCategoryComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+  constructor(private http: HttpClient) { }
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+  getAll(): Observable<CategoryModel[]> {
+    return this.http.get<CategoryModel[]>(this.baseUrl);
+  }
+
+  add(category: CategoryModel): Observable<any> {
+    return this.http.post(`${this.baseUrl}/add`, category);
+  }
+
+  update(category: CategoryModel): Observable<any> {
+    return this.http.post(`${this.baseUrl}/update`, category);
+  }
+
+  removeById(categoryId: string): Observable<any> {
+    return this.http.post(`${this.baseUrl}/removeById`, { _id: categoryId });
+  }
+}

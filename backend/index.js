@@ -31,4 +31,4 @@ app.use("/api/contact", contactRouter);
 connection();
 
 const port = process.env.PORT || 5000;
-app.listen(port,() => console.log("Uygulama başarılı şekilde ayğa kalktı"));
+app.listen(port, () => console.log("L'application a démarré avec succès"));

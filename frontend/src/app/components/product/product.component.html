@@ -2,7 +2,7 @@
     <div class="container1">
         <div class="categories-links">
             <ul class="categories-list">
-                <li  (click)="changeCategory('','Tümü')"  class="center-list-item" [ngClass]="request.categoryName == 'Tümü' ? 'active' : ''">Tümü</li>
+                <li  (click)="changeCategory('','Tümü')"  class="center-list-item" [ngClass]="request.categoryName == 'Tümü' ? 'active' : ''">Tous</li>
                 <li (click)="changeCategory(category._id, category.name)" class="center-list-item" [ngClass]="request.categoryName == category.name ? 'active' : ''" *ngFor="let category of categories">
                    {{category.name}}
                 </li>
@@ -11,13 +11,13 @@
         <div class="product-wrapper">
             <div style="display: flex;">
                 <div>
-                    <button (click)="toggleFilter()" style="width: 200px; margin-right: 690px;" class="btn btn-dark">Filtreler</button>
+                    <button (click)="toggleFilter()" style="width: 200px; margin-right: 690px;" class="btn btn-dark">Filtres</button>
                 </div>
                 <div class="mb-3" style="width: 1400px; margin-right: 10px;">
-                    <input type="search" [(ngModel)]="request.search" class="form-control" placeholder="Arancak değeri yazınız">
+                    <input type="search" [(ngModel)]="request.search" class="form-control" placeholder="Entrez la valeur à rechercher">
                 </div>
                 <div>
-                    <button style="width: 150px;" (click)="getAll()" class="btn btn-dark">Ara</button>
+                    <button style="width: 150px;" (click)="getAll()" class="btn btn-dark">Rechercher</button>
                 </div>
             </div>
             <ul class="product-list">
@@ -40,9 +40,9 @@
     </div>
     <div *ngIf="isFilterVisible" class="filter">
         <div (click)="toggleFilter()" style="float: right; font-size: 20px; padding: 5px; cursor: pointer;"><i class="bi bi-x-lg"></i></div>
-        <div class="filterwrapper">
+        <div class="filter-wrapper">
             <div>
-                <label for="" style="font-size: 30px;">BEDEN</label>
+                <label for="" style="font-size: 30px;">Taille</label>
                 <div class="size">
                     <input type="checkbox" (change)="toggleSizeFilter('S')">
                     <p>S</p>
@@ -61,7 +61,7 @@
                 </div>
             </div>
             <div class="price-list">
-                <label for="" style="font-size: 30px;">FİYAT</label>
+                <label for="" style="font-size: 30px;">Prix</label>
                 <div class="price">
                     <input type="radio" name="price" (change)="togglePriceFilter(1, 4)">
                     <p>1 TL - 4 TL</p>
@@ -80,7 +80,7 @@
                 </div>
             </div>
         </div>
-        <button class="btn btn-dark" (click)="applyFilters()" style="margin-left: 20px; width: 90%;">UYGULA</button>
+        <button class="btn btn-dark" (click)="applyFilters()" style="margin-left: 20px; width: 90%;">Appliquer</button>
         
     </div>
 </section>

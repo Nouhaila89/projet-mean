@@ -1,32 +1,32 @@
 <div class="container" style="margin-top: 130px; margin-bottom: 250px;">
-    <div class="row baskets-wrapper">
-        <div class="col-md-12">
-            <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">Sipariş Tarhi</th>
-                    <th scope="col">Ürün Resimi</th>
-                    <th scope="col">Ürün Adı</th>
-                    <th scope="col">Beden</th>
-                    <th scope="col">Adet</th>
-                    <th scope="col">Fiyatı</th>
-                    <th scope="col">Toplam Tutar</th>
+  <div class="row baskets-wrapper">
+      <div class="col-md-12">
+          <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Date de Commande</th>
+                  <th scope="col">Image du Produit</th>
+                  <th scope="col">Nom du Produit</th>
+                  <th scope="col">Taille</th>
+                  <th scope="col">Quantité</th>
+                  <th scope="col">Prix Unitaire</th>
+                  <th scope="col">Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let order of orders">
+                  <td>{{order.createdDate | date: 'dd.MM.yyyy HH:mm:ss'}}</td>
+                  <td>
+                      <img [src]="'http://localhost:5000/' + order?.products[0]?.imageUrls[0]?.path" width="50"/>
+                  </td>
+                  <td>{{order?.products[0]?.name}}</td>        
+                  <td>{{order.size}}</td>        
+                  <td>{{order.quantity}}</td>
+                  <td>{{order.price}}</td>
+                  <td>{{+(order.price * order.quantity)}} TL</td> 
                   </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let order of orders">
-                    <td>{{order.createdDate |date: 'dd.MM.yyyy HH:mm:ss'}}</td>
-                    <td>
-                        <img [src]="'http://localhost:5000/' + order?.products[0]?.imageUrls[0]?.path" width="50"/>
-                    </td>
-                    <td>{{order?.products[0]?.name}}</td>        
-                    <td>{{order.size}}</td>        
-                    <td>{{order.quantity}}</td>
-                    <td>{{order.price}}</td>
-                    <td>{{+(order.price * order.quantity)}} TL</td> 
-                    </tr>
-                </tbody>
-              </table>
-        </div>
-    </div>
+              </tbody>
+            </table>
+      </div>
+  </div>
 </div>

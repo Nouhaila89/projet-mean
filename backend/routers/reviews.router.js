@@ -4,40 +4,38 @@ const Reviews = require("../models/reviews");
 const {v4: uuidv4} = require("uuid");
 const response = require("../services/response.service");
 
-//Ürün Ekleme
+// Ajouter un commentaire
 router.post("/add", async(req, res)=>{
     response(res, async()=> {
-        const {name, description, productId} = req.body;
+        const {nom, description, produitId} = req.body;
 
-        const reviewsId = uuidv4();
+        const idCommentaire = uuidv4();
 
-        let reviews = new Reviews({
-            _id: reviewsId,
-            name: name.toUpperCase(),
+        let commentaire = new Reviews({
+            _id: idCommentaire,
+            nom: nom.toUpperCase(),
             description: description,
-            createdDate: new Date(),
-            productId: productId,
+            dateCréation: new Date(),
+            produitId: produitId,
         });
-        await reviews.save();
+        await commentaire.save();
 
-        res.json({message: "Yorumunuz başarıyla gönderildi"})
+        res.json({message: "Votre commentaire a été envoyé avec succès"})
     })
 });
 
+// Obtenir tous les commentaires pour un produit
 router.get("/getAllReviews/:productId", async (req, res) => {
     const { productId } = req.params; 
 
     response(res, async () => {
-        let reviews;
-        reviews = await Reviews
-            .find({ productId: productId })
-            .sort({ name: 1 });
+        let commentaires;
+        commentaires = await Reviews
+            .find({ produitId: productId })
+            .sort({ nom: 1 });
 
-        res.json(reviews);
+        res.json(commentaires);
     });
 });
-
-
-
 
 module.exports = router;

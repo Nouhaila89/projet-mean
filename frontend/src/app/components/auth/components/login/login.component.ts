@@ -30,7 +30,7 @@ export class LoginComponent {
       model.password = form.controls["password"].value;
 
       this._auth.login(model, res=>{
-        this._toastr.success("Giriş başarılı");
+        this._toastr.success("Connexion réussie");
         localStorage.setItem("token",res.token);
         localStorage.setItem("user", JSON.stringify(res.user));
         if (res.user.isAdmin) { 

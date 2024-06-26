@@ -61,7 +61,7 @@ export class AdminCategoryComponent implements OnInit{
   }
 
   removeById(model: CategoryModel){
-    this._swal.callSwal(`${model.name} kategorisini silmek istiyormusunuz`, "" ,"Sil",()=>{
+    this._swal.callSwal(`${model.name} souhaitez-vous supprimer cette catégorie ?`, "", "Supprimer", () => {
       this._category.removeById(model._id,res=>{
         this._toastr.info(res.message);
         this.getAll();

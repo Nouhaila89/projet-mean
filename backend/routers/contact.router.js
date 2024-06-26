@@ -1,12 +1,12 @@
 const express = require("express");
 const router = express.Router();
 const Contact = require("../models/contact");
-const {v4:uuidv4} = require("uuid");
+const { v4: uuidv4 } = require("uuid");
 const response = require("../services/response.service");
 
-router.post("/add", async(req, res) =>{
-    response(res, async()=>{
-        const {name, email, message} = req.body;
+router.post("/add", async (req, res) => {
+    response(res, async () => {
+        const { name, email, message } = req.body;
 
         const contact = new Contact({
             _id: uuidv4(),
@@ -16,15 +16,15 @@ router.post("/add", async(req, res) =>{
         });
 
         await contact.save();
-        res.json({ message : "Mesajınız başarıyla ile gönderildi."});
-    })
+        res.json({ message: "Votre message a été envoyé avec succès." });
+    });
 });
 
-router.get("/", async(req, res)=>{
-    response(res, async()=>{
-        const contact = await Contact.find().sort({name: 1});
+router.get("/", async (req, res) => {
+    response(res, async () => {
+        const contact = await Contact.find().sort({ name: 1 });
         res.json(contact);
-    })
-})
+    });
+});
 
 module.exports = router;

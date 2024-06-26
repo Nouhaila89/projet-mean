@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
-import { SharedModule } from '../../common/shared/shared.module';
 import { SwalService } from '../../common/services/swal.service';
 import { BasketModel } from './models/basket.model';
 import { BasketService } from './service/basket.service';
@@ -9,6 +7,7 @@ import { PaymentService } from '../payment/service/payment.service';
 import { Router } from '@angular/router';
 import { CouponService } from '../admin-coupon/services/coupon.service';
 import { CouponModel } from '../admin-coupon/models/coupon.model';
+import { SharedModule } from '../../common/shared/shared.module';
 
 @Component({
   selector: 'app-baskets',
@@ -22,7 +21,7 @@ export class BasketsComponent implements OnInit {
   coupons: CouponModel[] = [];
   sum: number = 0;
   couponName: string = ''; 
-  appliedCoupon: CouponModel | null = null;  // Uygulanan kuponu tutmak için değişken
+  appliedCoupon: CouponModel | null = null;  // Variable pour stocker le coupon appliqué
 
   constructor(
     private _basket: BasketService,
@@ -55,7 +54,7 @@ export class BasketsComponent implements OnInit {
   }
 
   removeById(_id: string){
-    this._swal.callSwal("Ürünü sepetten silmek istiyor musunuz?","Ürünü Sil","Sil",() => {
+    this._swal.callSwal("Voulez-vous supprimer l'article du panier ?","Supprimer l'article","Supprimer",() => {
       let model = {_id: _id};
       this._basket.removeById(model, res => {
         this._toastr.info(res.message);
@@ -101,7 +100,7 @@ export class BasketsComponent implements OnInit {
 
   applyCoupon(couponName: string) {
     if (this.appliedCoupon) {
-      this._toastr.error('Zaten bir kupon uygulanmış. Başka bir kupon kullanamazsınız.');
+      this._toastr.error('Un coupon a déjà été appliqué. Vous ne pouvez pas utiliser un autre coupon.');
       return;
     }
 
@@ -113,13 +112,13 @@ export class BasketsComponent implements OnInit {
       
       if (discountRate > 0) {
         this.sum -= (this.sum * (discountRate / 100));
-        this._toastr.success(`Kupon başarıyla uygulandı. İndirim oranı: ${discountRate}%`);
+        this._toastr.success(`Coupon appliqué avec succès. Taux de réduction : ${discountRate}%`);
         this._paymentService.setSum(this.sum);
       } else {
-        this._toastr.error('Kupon indirim oranı geçersiz.');
+        this._toastr.error('Taux de réduction du coupon invalide.');
       }
     } else {
-      this._toastr.error('Girilen kupon bulunamadı.');
+      this._toastr.error('Coupon non trouvé.');
     }
   }
 

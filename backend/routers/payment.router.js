@@ -1,14 +1,14 @@
 const Iyzipay = require('iyzipay');
-const {v4:uuidv4} = require("uuid");
+const { v4: uuidv4 } = require("uuid");
 const express = require("express");
 const router = express.Router();
 const response = require("../services/response.service");
 
-router.post("/payment", async(req, res) => {
-    response(res, async()=>{
+router.post("/payment", async (req, res) => {
+    response(res, async () => {
         const id = uuidv4();
     
-        const {price, cartName, cartNumber, expireMonth, expireYear, cvc, registerCard} = req.body;
+        const { price, cartName, cartNumber, expireMonth, expireYear, cvc, registerCard } = req.body;
     
         const iyzipay = new Iyzipay({
             apiKey: 'sandbox-G06dFjcMkXItng9Ke4NlnCOijkGg5cHp',
@@ -77,12 +77,12 @@ router.post("/payment", async(req, res) => {
         iyzipay.payment.create(request, function (err, result) {
             if (result.errorMessage) {
                 let message = result.errorMessage;
-                res.status(403).json({message: message});
+                res.status(403).json({ message: message });
             } else {
-                return res.json({ message: "Ödeme başarılı" });
+                return res.json({ message: "Paiement réussi" });
             }
         });
-    })
-})
+    });
+});
 
 module.exports = router;

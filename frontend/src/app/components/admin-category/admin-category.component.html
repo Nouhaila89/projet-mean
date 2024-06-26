@@ -1,160 +1,111 @@
 <div class="content-wrapper">
-  <div style="margin: 0px 20px">
-    <div style="font-size: 30px">Kategori Listesi</div>
-    <div style="margin: 20px 0px">
-      <div class="col-md-6" style="float: left; margin-left: -10px">
-        <input
-          type="search"
-          [(ngModel)]="search"
-          class="form-control"
-          placeholder="Arancak değeri yazınız..."
-        />
-      </div>
-      <button
-        class="btn btn-dark"
-        style="margin-left: 600px; width: 185px"
-        data-bs-toggle="modal"
-        data-bs-target="#addModal"
-      >
-        Kategori Ekle
-      </button>
-    </div>
-    <div>
-      <table class="table" style="margin: 0px; width: 1600px">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Kategori Adı</th>
-            <th scope="col" style="width: 200px">İşlemler</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr
-            *ngFor="
-              let category of categories | categoryPipe : search;
-              let index = index
-            "
-          >
-            <th scope="row">{{ index + 1 }}</th>
-            <td>{{ category.name }}</td>
-            <td>
-              <button
-                class="btn btn-dark"
-                style="margin: 0px 5px"
-                (click)="get(category)"
-                data-bs-toggle="modal"
-                data-bs-target="#updateModal"
-              >
-                Güncelle</button
-              ><button (click)="removeById(category)" class="btn btn-danger">
-                Sil
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
-
-<div
-  class="modal fade"
-  id="updateModal"
-  tabindex="-1"
-  aria-labelledby="updateModalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="updateModalLabel">
-          Kategori Güncelle
-        </h1>
-        <button
-          type="button"
-          id="updateModalCLoseBtn"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
-      </div>
-      <form
-        autocomplete="off"
-        #updateForm="ngForm"
-        (ngSubmit)="update(updateForm)"
-      >
-        <div class="modal-body">
-          <label for="UpdateName">Kategori Adı</label>
+    <div style="margin: 0px 20px">
+      <div style="font-size: 30px">Liste des Catégories</div>
+      <div style="margin: 20px 0px">
+        <div class="col-md-6" style="float: left; margin-left: -10px">
           <input
-            type="text"
-            [(ngModel)]="updateCategory.name"
+            type="search"
+            [(ngModel)]="search"
             class="form-control"
-            name="UpdateName"
-            id="UpdateName"
-            #UpdateName
-            [appValid]="UpdateName.validity.valid"
-            required
+            placeholder="Entrez la valeur à rechercher..."
           />
         </div>
-        <div class="modal-footer">
-          <button
-            type="button"
-            class="btn btn-secondary"
-            data-bs-dismiss="modal"
-          >
-            Kapat
-          </button>
-          <button type="submit" class="btn btn-dark">Güncelle</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
-
-<div
-  class="modal fade"
-  id="addModal"
-  tabindex="-1"
-  aria-labelledby="addModalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="addModalLabel">Kategori Ekle</h1>
         <button
-          type="button"
-          id="addModalCLoseBtn"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
+          class="btn btn-dark"
+          style="margin-left: 600px; width: 185px"
+          data-bs-toggle="modal"
+          data-bs-target="#addModal"
+        >
+          Ajouter une Catégorie
+        </button>
       </div>
-      <form autocomplete="off" #addForm="ngForm" (ngSubmit)="add(addForm)">
-        <div class="modal-body">
-          <label for="name">Kategori Adı</label>
-          <input
-            type="text"
-            ngModel
-            class="form-control"
-            name="name"
-            id="name"
-            #name
-            [appValid]="name.validity.valid"
-            required
-          />
-        </div>
-        <div class="modal-footer">
-          <button
-            type="button"
-            class="btn btn-secondary"
-            data-bs-dismiss="modal"
-          >
-            Kapat
-          </button>
-          <button type="submit" class="btn btn-dark">Kaydet</button>
-        </div>
-      </form>
+      <div>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nom de la Catégorie</th>
+              <th scope="col" style="width: 200px">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let category of categories | categoryPipe : search; let index = index">
+              <th scope="row">{{ index + 1 }}</th>
+              <td>{{ category.name }}</td>
+              <td>
+                <button
+                  class="btn btn-dark"
+                  style="margin: 0px 5px"
+                  (click)="get(category)"
+                  data-bs-toggle="modal"
+                  data-bs-target="#updateModal"
+                >
+                  <i class="fa fa-edit"></i> Mettre à Jour
+                </button>
+                <button (click)="removeById(category._id)" class="btn btn-danger">
+                  <i class="fa fa-trash"></i> Supprimer
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
-</div>
+  
+  <!-- Update Modal -->
+  <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="updateModalLabel">Mettre à Jour la Catégorie</h1>
+          <button type="button" id="updateModalCLoseBtn" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form [formGroup]="updateForm" (ngSubmit)="update()">
+          <div class="modal-body">
+            <label for="UpdateName">Nom de la Catégorie</label>
+            <input
+              type="text"
+              formControlName="name"
+              class="form-control"
+              id="UpdateName"
+              required
+            />
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+            <button type="submit" class="btn btn-dark">Mettre à Jour</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Add Modal -->
+  <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="addModalLabel">Ajouter une Catégorie</h1>
+          <button type="button" id="addModalCLoseBtn" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form [formGroup]="addForm" (ngSubmit)="add()">
+          <div class="modal-body">
+            <label for="name">Nom de la Catégorie</label>
+            <input
+              type="text"
+              formControlName="name"
+              class="form-control"
+              id="name"
+              required
+            />
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+            <button type="submit" class="btn btn-dark">Enregistrer</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  

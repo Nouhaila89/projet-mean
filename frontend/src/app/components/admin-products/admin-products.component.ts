@@ -59,7 +59,8 @@ export class AdminProductsComponent implements OnInit {
   }
 
   removeById(id: string){
-    this._swal.callSwal("Ürünü silmek istiyormusunuz?", "Ürünü Sil", "Sil",()=>{
+    this._swal.callSwal("Voulez-vous supprimer le produit ?", "Supprimer le Produit", "Supprimer", () => {
+
       let model = {_id: id};
       this._product.removeById(model, res=>{
         this._toastr.info(res.message);
